@@ -1,0 +1,14 @@
+@import '@components/Button.scss';
+
+.Hyperlink {
+  color: var(--color-cyan);
+
+  &:visited {
+    color: var(--color-cyan);
+  }
+
+  &.Button {
+    @include Button;
+    display: inline-block;
+  }
+}

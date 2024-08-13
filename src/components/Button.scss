@@ -23,15 +23,12 @@
   text-decoration: underline !important;
 }
 
-a.Button {
-  @include Button;
-  display: inline-block;
-}
-
 .Button {
   @include Button;
 
-  &:hover {
-    @include Hover;
+  @media (hover: hover) {
+    &:hover {
+      @include Hover;
+    }
   }
 }

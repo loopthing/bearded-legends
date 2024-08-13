@@ -1,0 +1,22 @@
+.About {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: space-around;
+
+  .Logo {
+    display: block;
+  }
+
+  .Chat {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  p {
+    text-align: center;
+  }
+}

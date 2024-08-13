@@ -4,9 +4,9 @@ import Arrays from '@utils/Arrays';
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Card.scss';
 
-export default function Card({ className, children }) {
+export default function Card({ className, children, edit: _edit }) {
   const [swipeRef, swipe] = useSwipe();
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(_edit);
 
   const frontChildren = React.Children.toArray(children).filter(
     (child) => child.type !== SlideIn,
@@ -19,6 +19,10 @@ export default function Card({ className, children }) {
   useEffect(() => {
     setEdit(swipe === 'left');
   }, [swipe]);
+
+  useEffect(() => {
+    setEdit(_edit);
+  }, [_edit]);
 
   return (
     <div

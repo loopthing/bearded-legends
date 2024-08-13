@@ -1,6 +1,6 @@
 {
   "name": "bearded-legends",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha+20240813",
   "description": "Bearded Legends",
   "main": "index.js",
   "author": "Loopthing",
@@ -9,6 +9,7 @@
     "clean": "rimraf docs",
     "start": "npx webpack serve --mode development",
     "build": "webpack --config webpack.config.js --mode production",
+    "predeploy": "npm run clean && npm run build",
     "prettier": "npx prettier . --write",
     "lint": "npx eslint src --ext .js,.jsx"
   },

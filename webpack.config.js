@@ -2,7 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { version } = require('./package.json');
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   mode: 'development',
@@ -11,7 +11,7 @@ module.exports = {
     main: './src/index.jsx',
   },
   output: {
-    filename: `bundle-${version}-${uuidv4()}.js`,
+    filename: `bundle-${version}.js`,
     path: path.resolve(__dirname, 'docs'),
     publicPath: '/bearded-legends',
   },
@@ -42,7 +42,8 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]__[hash:base64:5]',
+                // localIdentName: '[local]__[hash:base64:5]',
+                localIdentName: '[name]-[local]',
               },
             },
           },
@@ -74,6 +75,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: './manifest.json', to: './', context: 'public' },
+        { from: './404.html', to: './', context: 'public' },
         { from: './service-worker.js', to: './', context: 'public' },
         { from: './**/*.ico', to: './', context: 'public' },
         { from: './**/*.png', to: './', context: 'public' },
@@ -93,8 +95,9 @@ module.exports = {
     },
   },
   devServer: {
+    // contentBase: path.resolve(__dirname, 'docs'),
     static: {
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, './docs'),
     },
     historyApiFallback: true,
     hot: true,

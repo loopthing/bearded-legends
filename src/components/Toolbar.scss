@@ -1,0 +1,45 @@
+.Toolbar {
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    var(--color-gray-darkest),
+    var(--color-black)
+  );
+  background-color: var(--color-gray-darkest);
+  bottom: 0;
+  color: var(--color-orange);
+  display: flex;
+  justify-content: flex-start;
+  left: 0;
+  padding: 0.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1000; //TODO Manage z-index in one place
+
+  a.Button,
+  button.Button {
+    background-color: transparent;
+    border: 0.0625rem solid var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-oragne);
+    margin-left: 0.75rem;
+
+    & > * {
+      display: inline-block;
+      margin-left: 0.25rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  & > a.Button,
+  & > button.Button {
+    margin-left: 0.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
