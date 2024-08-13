@@ -18,9 +18,14 @@ export default function App({ className }) {
         <Logo
           className={Arrays.pack(Styles.Logo, LogoStyles.Largest).join(' ')}
         />
-        <p>
-          <b.GuildNameDecorative />
-        </p>
+        <div>
+          <p>
+            <b.GuildNameDecorative />
+          </p>
+          <p>
+            <b.UpdateInstructionMessage />
+          </p>
+        </div>
         <div className={Styles.Chat}>
           <Hyperlink
             href={b.DISCORD_CHAT_URL()}
