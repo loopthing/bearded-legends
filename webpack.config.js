@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: `bundle-${version}.js`,
     path: path.resolve(__dirname, 'docs'),
-    publicPath: '/bearded-legends',
+    publicPath: '/bearded-legends/',
   },
   module: {
     rules: [
@@ -41,6 +41,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              url: true,
               modules: {
                 // localIdentName: '[local]__[hash:base64:5]',
                 localIdentName: '[name]-[local]',

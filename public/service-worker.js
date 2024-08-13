@@ -4,7 +4,7 @@ const CACHE_NAME = `BL-cache-${VERSION}`;
 const ASSETS = [
   '/',
   '/favicon.ico',
-  '/index.html',
+  // '/index.html',
   '/manifest.json',
   '/icons/android-chrome-192x192.png',
   '/icons/android-chrome-512x512.png',
