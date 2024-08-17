@@ -4,10 +4,10 @@
 
 @mixin Button {
   align-items: center;
-  background-color: var(--color-white);
+  background-color: var(--color-light-blue);
   border: 0;
   border-radius: var(--button-border-radius);
-  color: var(--color-black);
+  color: var(--color-white);
   cursor: pointer;
   display: flex;
   font-size: 1.25rem;
