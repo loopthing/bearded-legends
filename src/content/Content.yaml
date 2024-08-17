@@ -1,5 +1,6 @@
 en:
   AboutButtonLabel: About us
+  AccessibilityHeader: Accessibility
   AddButtonLabel: Add
   CLOCK_FORMAT: ${hour}:${minute}
   ChatAppName: Chat
@@ -19,11 +20,16 @@ en:
   Minutes: minutes
   MinutesAbbr: M
   PauseButtonLabel: Pause
+  PreviewLabel: Preview
   RemoveButtonLabel: Remove
   ResetButtonLabel: Reset
   ResumeButtonLabel: Resume
   Seconds: seconds
   SecondsAbbr: S
+  SettingsAppName: Settings
   StartButtonLabel: Start
   UpdateInstructionMessage: Swipe down to update the app.
   WarTimerAppName: War Timer
+  ZoomLabel: Zoom
+  ZoomInLabel: Zoom in
+  ZoomOutLabel: Zoom out

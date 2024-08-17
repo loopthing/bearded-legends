@@ -1,12 +1,12 @@
 {
   "name": "bearded-legends",
-  "version": "1.0.0-alpha+20240817.005",
+  "version": "1.0.0-alpha+20240817.006",
   "description": "Bearded Legends",
   "main": "index.js",
   "author": "Loopthing",
   "license": "ISC",
   "scripts": {
-    "clean": "rimraf docs",
+    "clean": "npx rimraf docs",
     "start": "npx webpack serve --mode development",
     "build": "webpack --config webpack.config.js --mode production",
     "predeploy": "npm run clean && npm run build",

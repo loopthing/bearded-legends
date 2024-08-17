@@ -20,6 +20,7 @@ import Clock from './Header/Clock';
 import NodeDataList from './NodeDataList';
 import Timer from './Timer/Timer';
 import * as Styles from './WarTimer.scss';
+import useZoom from '../../hooks/useZoom';
 
 const DEFAULT_REMAINING_MILLIS = 1_800_000;
 
@@ -29,6 +30,8 @@ export default function WarTimer({ className }) {
   const [tick, start, stop] = useInterval({ delay: 100, strict: true });
   const [timers, setTimers] = useLocalStorage('BL.WarTimer.Data', []);
   const [edit, setEdit] = useState(false);
+
+  useZoom();
 
   const onClickAddButton = (_domEvent) => {
     const _timers = timers.map((timer) => ({ ...timer }));

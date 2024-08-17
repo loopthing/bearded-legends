@@ -18,14 +18,26 @@
 
   .Hours {
     font-size: 3rem;
+
+    input {
+      font-size: 3rem;
+    }
   }
 
   .Minutes {
     font-size: 3rem;
+
+    input {
+      font-size: 3rem;
+    }
   }
 
   .Seconds {
     font-size: 2rem;
+
+    input {
+      font-size: 2rem;
+    }
   }
 
   .Hours,
@@ -40,7 +52,7 @@
       background-color: var(--color-black);
       border: 0;
       border-radius: 0;
-      font-size: inherit;
+      // font-size: inherit;
       height: 100%;
       left: 0;
       margin: 0;

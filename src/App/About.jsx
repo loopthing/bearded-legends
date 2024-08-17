@@ -8,9 +8,12 @@ import Toolbar from '../components/Toolbar';
 import * as Styles from './About.scss';
 import Logo from './WarTimer/Header/Logo';
 import * as LogoStyles from './WarTimer/Header/Logo.scss';
+import useZoom from '../hooks/useZoom';
 
 export default function App({ className }) {
   const b = useContentBundle(content);
+
+  useZoom();
 
   return (
     <>
@@ -46,6 +49,10 @@ export default function App({ className }) {
       <Toolbar>
         <Hyperlink className={HyperlinkStyles.Button} href="/war-timer">
           <b.WarTimerAppName />
+        </Hyperlink>
+
+        <Hyperlink className={HyperlinkStyles.Button} href="/settings">
+          <b.SettingsAppName />
         </Hyperlink>
       </Toolbar>
     </>
