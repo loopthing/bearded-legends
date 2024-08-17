@@ -1,6 +1,6 @@
 {
   "name": "bearded-legends",
-  "version": "1.0.0-alpha+20240817.002",
+  "version": "1.0.0-alpha+20240817.003",
   "description": "Bearded Legends",
   "main": "index.js",
   "author": "Loopthing",
@@ -14,10 +14,12 @@
     "lint": "npx eslint src --ext .js,.jsx"
   },
   "dependencies": {
+    "hammerjs": "^2.0.8",
     "json-stable-stringify": "^1.1.1",
     "react": "^18.3.1",
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.3.1",
+    "react-hammerjs": "^1.0.1",
     "react-router-dom": "^6.26.0",
     "uuid": "^10.0.0"
   },

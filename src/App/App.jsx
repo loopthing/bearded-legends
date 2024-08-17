@@ -2,13 +2,15 @@ import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import useServiceWorker from '@hooks/useServiceWorker';
 import { useLocalStorage } from '@hooks/useStorage';
+import useSwipe from '@hooks/useSwipe';
 import * as Layout from '@styles/Layout.scss';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 
 import React, { useEffect, useState } from 'react';
+// import Hammer from 'react-hammerjs';
+// import { DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_VERTICAL } from 'hammerjs';
 
-import useSwipe from '../hooks/useSwipe';
 import About from './About';
 import * as Styles from './App.scss';
 
@@ -44,7 +46,22 @@ export default function App({ className }) {
     }
   }, [availableVersion]);
 
+  // const onPan = (domEvent) => {
+  //   if (Math.abs(domEvent.deltaX) < Math.abs(domEvent.deltaY)) {
+  //     if (domEvent.deltaY > 30) {
+  //       alert('Pulled down!');
+  //     }
+  //   }
+  // };
+
   return (
+    // <Hammer
+    //   onPan={onPan}
+    //   options={{
+    //     // touchAction: 'compute',
+    //     recognizers: { pan: { direction: DIRECTION_VERTICAL } },
+    //   }}
+    // >
     <div
       className={Arrays.pack(
         className,
@@ -57,6 +74,7 @@ export default function App({ className }) {
     >
       <About />
     </div>
+    // </Hammer>
   );
 }
 
