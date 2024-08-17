@@ -21,6 +21,10 @@ export default function useCheckUpdates() {
   }
 
   async function updateApp() {
+    if (!availableVersion) {
+      await checkAppUpdates();
+    }
+
     setAppVersion(availableVersion);
     await new Promise((resolve) => setTimeout(resolve, 0));
     navigate('/', { replace: true });
