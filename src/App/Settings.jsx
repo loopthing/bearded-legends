@@ -80,20 +80,21 @@ export default function Settings({ className }) {
         <label>
           App version
           <div>{appVersion}</div>
-        </label>
-        <label>
-          Available version
-          {availableVersion === appVersion ? (
+          {availableVersion === appVersion && (
             <div>
-              <CheckCircleFill /> Your app is up-to-date!
+              <CheckCircleFill /> Your app is up-to-date.
             </div>
-          ) : (
+          )}
+        </label>
+        {availableVersion !== appVersion && (
+          <label>
+            Available version
             <>
               <div>{availableVersion}</div>
               <Button onClick={updateApp}>Update your app</Button>
             </>
-          )}
-        </label>
+          </label>
+        )}
       </div>
 
       <Toolbar>
