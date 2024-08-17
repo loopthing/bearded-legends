@@ -1,13 +1,13 @@
 import content from '@content/Content.yaml';
+import useCheckUpdates from '@hooks/useCheckUpdates';
 import useContentBundle from '@hooks/useContentBundle';
 import useServiceWorker from '@hooks/useServiceWorker';
-import { useLocalStorage } from '@hooks/useStorage';
 import useSwipe from '@hooks/useSwipe';
 import * as Layout from '@styles/Layout.scss';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 // import Hammer from 'react-hammerjs';
 // import { DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_VERTICAL } from 'hammerjs';
 
@@ -31,9 +31,7 @@ export default function App({ className }) {
     }
   }, [swipe]);
 
-  useEffect(() => {
-    void checkAppUpdates();
-  }, []);
+  useEffect(() => void checkAppUpdates(), []);
 
   useEffect(() => {
     if (availableVersion) {
@@ -76,31 +74,4 @@ export default function App({ className }) {
     </div>
     // </Hammer>
   );
-}
-
-function useCheckUpdates() {
-  const _logger = new Logger('useCheckUpdates');
-  const [appVersion, setAppVersion] = useLocalStorage('BL.App.Version');
-  const [availableVersion, setAvailableVersion] = useState(null);
-
-  async function checkAppUpdates() {
-    return fetch('/bearded-legends/package.json')
-      .then((response) => response.json())
-      .then((result) => {
-        if (result && result.version) {
-          setAvailableVersion(result.version);
-        }
-        return result.version;
-      });
-  }
-
-  async function updateApp(version) {
-    setAppVersion(version);
-
-    return new Promise((resolve) => {
-      resolve(window.location.reload());
-    }, 0);
-  }
-
-  return [appVersion, availableVersion, { checkAppUpdates, updateApp }];
 }
