@@ -72,8 +72,13 @@ export default function TimerDisplay({
     }
   };
 
-  // TOOD input on enter keyup
-  const onSubmit = (domEvent) => {
+  const onKeyUp = (domEvent) => {
+    if (domEvent.key === 'Enter') {
+      domEvent.target.blur();
+    }
+  };
+
+  const onBlur = (domEvent) => {
     domEvent.target.blur();
     onChange(domEvent);
 
@@ -110,8 +115,8 @@ export default function TimerDisplay({
                 value={hoursBuffer}
                 onChange={onChange}
                 onFocus={onFocus}
-                onBlur={onSubmit}
-                onSubmit={onSubmit}
+                onBlur={onBlur}
+                onKeyUp={onKeyUp}
               />
               <SrOnly>
                 <b.Hours />
@@ -139,8 +144,9 @@ export default function TimerDisplay({
             value={minutesBuffer}
             onChange={onChange}
             onFocus={onFocus}
-            onBlur={onSubmit}
-            onSubmit={onSubmit}
+            onBlur={onBlur}
+            onSubmit={onBlur}
+            onKeyUp={onKeyUp}
           />
 
           <SrOnly>
@@ -165,8 +171,9 @@ export default function TimerDisplay({
             value={secondsBuffer}
             onChange={onChange}
             onFocus={onFocus}
-            onBlur={onSubmit}
-            onSubmit={onSubmit}
+            onBlur={onBlur}
+            onSubmit={onBlur}
+            onKeyUp={onKeyUp}
           />
 
           <SrOnly>
