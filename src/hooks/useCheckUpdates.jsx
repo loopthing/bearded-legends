@@ -7,7 +7,7 @@ export default function useCheckUpdates() {
   const _logger = new Logger('useCheckUpdates');
   const [appVersion, setAppVersion] = useLocalStorage('BL.App.Version');
   const [availableVersion, setAvailableVersion] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function checkAppUpdates() {
     return fetch('/bearded-legends/package.json')
@@ -26,9 +26,9 @@ export default function useCheckUpdates() {
     }
 
     setAppVersion(availableVersion);
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    navigate('/', { replace: true });
-    // window.location.reload();
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // navigate('/', { replace: true });
+    window.location.reload();
   }
 
   return [appVersion, availableVersion, { checkAppUpdates, updateApp }];
