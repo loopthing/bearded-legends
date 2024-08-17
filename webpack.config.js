@@ -11,7 +11,7 @@ module.exports = {
     main: './src/index.jsx',
   },
   output: {
-    filename: `bundle-${version}.js`,
+    filename: `bundle.js`,
     path: path.resolve(__dirname, 'docs'),
     publicPath: '/bearded-legends/',
   },
@@ -75,6 +75,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
+        { from: './package.json', to: './', context: './' },
         { from: './manifest.json', to: './', context: 'public' },
         { from: './404.html', to: './', context: 'public' },
         { from: './service-worker.js', to: './', context: 'public' },

@@ -4,12 +4,13 @@ const CACHE_NAME = `BL-cache-${VERSION}`;
 const ASSETS = [
   '/',
   '/favicon.ico',
-  // '/index.html',
+  '/index.html',
+  '/bundle.js',
   '/manifest.json',
   '/icons/android-chrome-192x192.png',
   '/icons/android-chrome-512x512.png',
-  // '/thirdparty/joelcarrouche.com/troika-fontfacekit/web%20fonts/troika_regular_macroman/troika-webfont.woff',
-  '/bundle.js',
+  '/b8c277d8a1c9b0d28afd.png',
+  '/75d37cba851487f6e6cc.woff',
 ];
 
 self.addEventListener('install', (domEvent) => {
@@ -25,10 +26,25 @@ self.addEventListener('install', (domEvent) => {
 self.addEventListener('fetch', (domEvent) => {
   console.log('[service-worker] fetch');
 
+  if (
+    domEvent.request.url.startsWith('chrome-extension:') ||
+    domEvent.request.url.startsWith('file:')
+  ) {
+    // If the request is unsupported, do nothing
+    return;
+  }
+
   domEvent.respondWith(
-    caches.match(domEvent.request).then((response) => {
-      return response || fetch(domEvent.request);
-    }),
+    fetch(domEvent.request)
+      .then((response) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(domEvent.request, response.clone());
+          return response;
+        });
+      })
+      .catch(() => {
+        return caches.match(domEvent.request);
+      }),
   );
 });
 

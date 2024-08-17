@@ -17,6 +17,7 @@ export default function TimerDisplay({
   const _logger = new Logger('TimerDisplay');
   const b = useContentBundle(content);
   const ref = useRef(null);
+  const dirtyRef = useRef({});
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -61,22 +62,28 @@ export default function TimerDisplay({
 
     if (el.classList.contains(Styles.Hours)) {
       setHoursBuffer(value);
+      dirtyRef.current.hours = true;
     } else if (el.classList.contains(Styles.Minutes)) {
       setMinutesBuffer(value);
+      dirtyRef.current.minutes = true;
     } else if (el.classList.contains(Styles.Seconds)) {
       setSecondsBuffer(value);
+      dirtyRef.current.seconds = true;
     }
   };
 
+  // TOOD input on enter keyup
   const onSubmit = (domEvent) => {
     domEvent.target.blur();
     onChange(domEvent);
 
     updateRemainingMillis(
-      Number(hoursBuffer || 0) * 3_600_000 +
-        Number(minutesBuffer || 0) * 60_000 +
-        Number(secondsBuffer || 0) * 1_000,
+      Number(dirtyRef.current.hours ? hoursBuffer : hours) * 3_600_000 +
+        Number(dirtyRef.current.minutes ? minutesBuffer : minutes) * 60_000 +
+        Number(dirtyRef.current.seconds ? secondsBuffer : seconds) * 1_000,
     );
+
+    dirtyRef.current = {};
   };
 
   return (
