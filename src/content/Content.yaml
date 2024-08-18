@@ -4,6 +4,7 @@ en:
   AddButtonLabel: Add
   AppVersionCheckButtonLabel: Check for updates
   AppVersionLabel: App version
+  AppVersionErrorMessage: Failed to retrieve available version.
   AppVersionStatusMessage: Your app is up-to-date.
   AvailableAppVersionLabel: Available version
   CLOCK_FORMAT: ${hour}:${minute}

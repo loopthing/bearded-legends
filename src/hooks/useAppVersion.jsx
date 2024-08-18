@@ -15,8 +15,9 @@ export default function useAppVersion() {
 
   async function checkUpdates() {
     setProgress(0);
+    setError(null);
 
-    return fetch('/bearded-legends/package.json')
+    return fetch(`/bearded-legends/package.json?bust=${Date.now()}`)
       .then((response) => response.json())
       .then((result) => {
         if (result && result.version) {
@@ -33,7 +34,10 @@ export default function useAppVersion() {
       await checkUpdates();
     }
 
-    setAppVersion(availableVersion);
+    if (availableVersion) {
+      setAppVersion(availableVersion);
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 400));
     window.location.reload();
   }
