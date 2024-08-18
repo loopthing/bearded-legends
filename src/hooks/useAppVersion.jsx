@@ -39,7 +39,7 @@ export default function useAppVersion() {
     }
 
     await new Promise((resolve) => setTimeout(resolve, 400));
-    window.location.reload();
+    window.location.reload(true);
   }
 
   return [
