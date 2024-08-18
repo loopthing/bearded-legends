@@ -1,3 +1,5 @@
+import Logger from '@utils/Logger';
+
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {
@@ -5,36 +7,63 @@ import {
   RouterProvider,
   useRouteError,
 } from 'react-router-dom';
+
 import About from './App/About';
 import App from './App/App';
 import Settings from './App/Settings';
 import WarTimer from './App/WarTimer/WarTimer';
 import './index.css';
 
-const basename = '/bearded-legends';
+const BASENAME = '/bearded-legends';
+const _logger = new Logger('index');
+const $root = document.querySelector('#root');
+const root = createRoot($root);
 
 const router = createBrowserRouter(
   [
-    { path: '/', element: <App />, errorElement: <About /> },
-    { path: 'about', element: <About /> },
-    { path: 'settings', element: <Settings /> },
-    { path: 'war-timer', element: <WarTimer /> },
+    {
+      path: '/',
+      element: (
+        <App>
+          <About />
+        </App>
+      ),
+      errorElement: (
+        <App>
+          <About />
+        </App>
+      ),
+    },
+    {
+      path: 'about',
+      element: (
+        <App>
+          <About />
+        </App>
+      ),
+    },
+    {
+      path: 'settings',
+      element: (
+        <App>
+          <Settings />
+        </App>
+      ),
+    },
+    {
+      path: 'war-timer',
+      element: (
+        <App>
+          <WarTimer />
+        </App>
+      ),
+    },
   ],
-  { basename },
+  { basename: BASENAME },
 );
-
-const $root = document.querySelector('#root');
-const root = createRoot($root);
 
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    {/* <WarTimer /> */}
   </React.StrictMode>,
 );
-
-function RouterError() {
-  const routerError = useRouteError();
-
-  return <h1>Error</h1>;
-}

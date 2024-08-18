@@ -4,11 +4,18 @@ import { useState } from 'react';
 
 export default function useCheckUpdates() {
   const _logger = new Logger('useCheckUpdates');
-  const [appVersion, setAppVersion] = useLocalStorage('BL.App.Version');
+  const [appVersion, setAppVersion] = useLocalStorage('BL.App.version');
   const [availableVersion, setAvailableVersion] = useState(null);
   const [error, setError] = useState(null);
+  const [progress, setProgress] = useState(null);
+
+  //
+  // TODO Show progress on Settings page
+  //
 
   async function checkAppUpdates() {
+    setProgress(0);
+
     return fetch('/bearded-legends/package.json')
       .then((response) => response.json())
       .then((result) => {
@@ -17,7 +24,8 @@ export default function useCheckUpdates() {
         }
         return result.version;
       })
-      .catch(setError);
+      .catch(setError)
+      .finally(() => setProgress(1));
   }
 
   async function updateApp() {
@@ -30,5 +38,11 @@ export default function useCheckUpdates() {
     window.location.reload();
   }
 
-  return [appVersion, availableVersion, { checkAppUpdates, updateApp }, error];
+  return [
+    appVersion,
+    availableVersion,
+    { checkAppUpdates, updateApp },
+    error,
+    progress,
+  ];
 }
