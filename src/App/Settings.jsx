@@ -81,25 +81,32 @@ export default function Settings({ className }) {
           </div>
         </label>
 
-        <h2>Software update</h2>
+        <h2>
+          <b.SoftwareUpdateHeader />
+        </h2>
         <label>
-          App version
+          <b.AppVersionLabel />
           <div>{appVersion}</div>
           {versionError ? (
             <div>Error</div>
           ) : (
             availableVersion === appVersion && (
               <div>
-                <CheckCircleFill /> Your app is up-to-date.
+                <CheckCircleFill />
+                <span>
+                  <b.AppVersionStatusMessage />
+                </span>
               </div>
             )
           )}
         </label>
         {availableVersion !== appVersion && (
           <label>
-            Available version
+            <b.AvailableAppVersionLabel />
             <div>{availableVersion}</div>
-            <Button onClick={updateApp}>Update your app</Button>
+            <Button onClick={updateApp}>
+              <b.UpdateInstructionMessage />
+            </Button>
           </label>
         )}
       </div>

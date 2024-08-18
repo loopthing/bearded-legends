@@ -2,6 +2,9 @@ en:
   AboutButtonLabel: About us
   AccessibilityHeader: Accessibility
   AddButtonLabel: Add
+  AppVersionLabel: App version
+  AppVersionStatusMessage: Your app is up-to-date.
+  AvailableAppVersionLabel: Available version
   CLOCK_FORMAT: ${hour}:${minute}
   ChatAppName: Chat
   ChatAppInvitationLabel_1: or,
@@ -27,8 +30,9 @@ en:
   Seconds: seconds
   SecondsAbbr: S
   SettingsAppName: Settings
+  SoftwareUpdateHeader: Software update
   StartButtonLabel: Start
-  UpdateInstructionMessage: Swipe down to update the app.
+  UpdateInstructionMessage: Update your app
   WarTimerAppName: War Timer
   ZoomLabel: Zoom
   ZoomInLabel: Zoom in

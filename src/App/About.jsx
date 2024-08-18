@@ -25,9 +25,6 @@ export default function App({ className }) {
           <p>
             <b.GuildNameDecorative />
           </p>
-          <p>
-            <b.UpdateInstructionMessage />
-          </p>
         </div>
         <div className={Styles.Chat}>
           <Hyperlink
