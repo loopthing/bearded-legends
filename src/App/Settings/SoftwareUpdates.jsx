@@ -42,13 +42,18 @@ export default function SoftwareUpdates() {
           <b.AvailableAppVersionLabel />
           <div>{availableVersion}</div>
           <Button onClick={updateApp}>
-            <b.UpdateInstructionMessage />
+            <b.UpdateButtonLabel />
           </Button>
         </label>
       ) : (
-        <Button onClick={checkUpdates}>
-          <b.AppVersionCheckButtonLabel />
-        </Button>
+        <>
+          <Button onClick={checkUpdates}>
+            <b.AppVersionCheckButtonLabel />
+          </Button>
+          <Button onClick={updateApp}>
+            <b.ForceUpdateButtonLabel />
+          </Button>
+        </>
       )}
     </>
   );

@@ -35,7 +35,8 @@ en:
   SettingsAppName: Settings
   SoftwareUpdatesHeader: Software update
   StartButtonLabel: Start
-  UpdateInstructionMessage: Update your app
+  UpdateButtonLabel: Update your app
+  ForceUpdateButtonLabel: Force update your app
   UTC: UTC
   WarTimerAppName: War Timer
   ZoomLabel: Zoom
