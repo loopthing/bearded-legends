@@ -50,7 +50,6 @@ export default function SoftwareUpdates() {
 
       {availableVersion !== appVersion && (
         <label>
-          <b.AvailableAppVersionLabel />
           <Button onClick={updateApp}>
             <b.UpdateButtonLabel />
           </Button>
