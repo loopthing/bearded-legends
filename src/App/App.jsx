@@ -8,6 +8,8 @@ import React, { useEffect } from 'react';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Styles from './App.scss';
+import useZoom from '@hooks/useZoom';
+import HeartbeatProvider from './HeartbeatProvider';
 
 export default function App({ children }) {
   const _logger = new Logger('App');
@@ -17,6 +19,7 @@ export default function App({ children }) {
   const navigate = useNavigate();
 
   void useServiceWorker();
+  void useZoom();
 
   useEffect(() => {
     if (pathname !== null && pathname !== location.pathname) {
@@ -30,5 +33,9 @@ export default function App({ children }) {
     setPathname(location.pathname);
   }, [location]);
 
-  return <div className={Styles.App}>{children}</div>;
+  return (
+    <HeartbeatProvider>
+      <div className={Styles.App}>{children}</div>
+    </HeartbeatProvider>
+  );
 }

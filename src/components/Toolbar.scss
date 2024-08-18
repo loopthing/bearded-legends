@@ -24,13 +24,9 @@
     color: var(--color-orange);
     margin-left: 0.75rem;
 
-    & > * {
+    svg {
       display: inline-block;
-      margin-left: 0.25rem;
-
-      &:first-child {
-        margin-left: 0;
-      }
+      margin-right: 0.25rem;
     }
   }
 

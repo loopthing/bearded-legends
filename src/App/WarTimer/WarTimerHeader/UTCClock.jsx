@@ -2,13 +2,15 @@ import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
-import React, { useEffect, useState } from 'react';
-import * as Styles from './Clock.scss';
+import React, { useContext, useEffect, useState } from 'react';
+import * as Styles from './UTCClock.scss';
+import { HeartbeatContext } from '../../HeartbeatProvider';
 
-export default function Clock({ className, tick, timeZone = 'UTC' }) {
+export default function Clock({ className }) {
   const _logger = new Logger('Clock');
-  const _b = useContentBundle(content);
+  const b = useContentBundle(content);
   const [clock, setClock] = useState({});
+  const { tick } = useContext(HeartbeatContext);
 
   useEffect(() => {
     const now = new Date();
@@ -34,7 +36,9 @@ export default function Clock({ className, tick, timeZone = 'UTC' }) {
           {clock.hours}:{clock.minutes}
           {/* <small>.{clock.seconds}</small> */}
         </div>
-        <div className={Styles.TimeZone}>{timeZone}</div>
+        <div className={Styles.TimeZone}>
+          <b.UTC />
+        </div>
       </div>
     </div>
   );

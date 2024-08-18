@@ -33,10 +33,7 @@ export default function Settings({ className }) {
       </div>
 
       <Toolbar>
-        <Hyperlink
-          className={Arrays.pack(HyperlinkStyles.Button).join(' ')}
-          href="/"
-        >
+        <Hyperlink className={HyperlinkStyles.Button} href="/">
           <b.HomeButtonLabel />
         </Hyperlink>
       </Toolbar>

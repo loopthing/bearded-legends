@@ -6,8 +6,8 @@ import Arrays from '@utils/Arrays';
 import React from 'react';
 import Toolbar from '../components/Toolbar';
 import * as Styles from './About.scss';
-import Logo from './WarTimer/Header/Logo';
-import * as LogoStyles from './WarTimer/Header/Logo.scss';
+import Logo from './Logo';
+import * as LogoStyles from './Logo.scss';
 import useZoom from '../hooks/useZoom';
 
 export default function App({ className }) {
