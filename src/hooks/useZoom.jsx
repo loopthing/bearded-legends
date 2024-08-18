@@ -2,8 +2,8 @@ import { useLocalStorage } from '@hooks/useStorage';
 import { useEffect } from 'react';
 
 const DEFAULT_FONT_SIZE = 16;
-const INCREMENT = DEFAULT_FONT_SIZE / 4;
-const MINIMUM_FONT_SIZE = DEFAULT_FONT_SIZE - 2 * INCREMENT;
+const INCREMENT = 1;
+const MINIMUM_FONT_SIZE = 12;
 
 export default function useZoom() {
   const [fontSize, setFontSize] = useLocalStorage(
