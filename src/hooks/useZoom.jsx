@@ -6,7 +6,10 @@ const INCREMENT = DEFAULT_FONT_SIZE / 4;
 const MINIMUM_FONT_SIZE = DEFAULT_FONT_SIZE - 2 * INCREMENT;
 
 export default function useZoom() {
-  const [fontSize, setFontSize] = useLocalStorage(DEFAULT_FONT_SIZE);
+  const [fontSize, setFontSize] = useLocalStorage(
+    'BL.App.fontSize',
+    DEFAULT_FONT_SIZE,
+  );
 
   const zoomIn = (_domEvent) => {
     setFontSize(Math.round(fontSize + INCREMENT));
