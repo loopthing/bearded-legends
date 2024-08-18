@@ -28,7 +28,7 @@ export default function WarTimer({ className }) {
   const _logger = new Logger('WarTimer');
   const b = useContentBundle(content);
   const [tick, start, stop] = useInterval({ delay: 100, strict: true });
-  const [timers, setTimers] = useLocalStorage('BL.WarTimer.Data', []);
+  const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
   const [edit, setEdit] = useState(false);
 
   useZoom();
