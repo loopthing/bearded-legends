@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function Animation({ display, children, expand, collapse }) {
+export default function ShowAnimation({ trigger, children, expand, collapse }) {
   const animationRef = useRef();
 
   const onAnimationEnd = () => {
@@ -17,7 +17,7 @@ export default function Animation({ display, children, expand, collapse }) {
     const el = animationRef.current;
 
     if (el) {
-      if (display) {
+      if (trigger) {
         el.removeAttribute('hidden');
         el.classList.remove(collapse);
         el.classList.add(expand);
@@ -27,7 +27,7 @@ export default function Animation({ display, children, expand, collapse }) {
         el.addEventListener('animationend', onAnimationEnd, { once: true });
       }
     }
-  }, [display]);
+  }, [trigger]);
 
   return (
     <div hidden ref={animationRef}>

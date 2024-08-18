@@ -8,13 +8,15 @@ en:
   AvailableAppVersionLabel: Available version
   CLOCK_FORMAT: ${hour}:${minute}
   ChatAppName: Chat
-  ChatAppInvitationLabel_1: or,
+  ChatAppInvitationLabel_1: Not a member?
   ChatAppInvitationLabel_2: Join our Discord server
+  CopyButtonLabel: Copy
   DefaultTimerName: Timer
   DISCORD_JOIN_URL: https://bit.ly/bearded-legends
   DISCORD_CHAT_URL: https://discord.com/channels/1027199394832977992/1065962891355889806
   DoneButtonLabel: Done
   EditButtonLabel: Edit
+  ExpiredLabel: Expired
   GameName: Knighthood
   GuildName: Bearded Legends
   GuildNameDecorative: ⎯ Bearded ✦ Legends ⎯

@@ -19,7 +19,11 @@
   white-space: nowrap;
 }
 
-@mixin Hover {
+@mixin ButtonActive {
+  color: var(--color-cyan);
+}
+
+@mixin ButtonHover {
   text-decoration: underline !important;
 }
 
@@ -28,7 +32,11 @@
 
   @media (hover: hover) {
     &:hover {
-      @include Hover;
+      @include ButtonHover;
     }
+  }
+
+  &:active {
+    @include ButtonActive;
   }
 }

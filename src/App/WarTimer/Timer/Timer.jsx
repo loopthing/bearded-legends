@@ -1,5 +1,5 @@
-import Animation from '@components/Animation';
-import TimerButton from '@components/IconButton';
+import ShowAnimation from '@components/ShowAnimation';
+import IconButton from '@components/IconButton';
 import SrOnly from '@components/SrOnly';
 import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
@@ -8,7 +8,13 @@ import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 
 import React, { useEffect, useState } from 'react';
-import { PauseCircle, PlayCircle, XCircle } from 'react-bootstrap-icons';
+import {
+  BoxArrowUp,
+  Copy,
+  PauseCircle,
+  PlayCircle,
+  XCircle,
+} from 'react-bootstrap-icons';
 
 import * as Styles from './Timer.scss';
 import TimerDisplay from './TimerDisplay';
@@ -98,6 +104,32 @@ export default function Timer({
     });
   };
 
+  const onClickCopyButton = (_domEvent) => {
+    const text =
+      remainingMillis > 0
+        ? `${name} <t:${(endTimestamp / 1000) | 0}:t> (<t:${(endTimestamp / 1000) | 0}:R>)`
+        : `${name} <t:${(endTimestamp / 1000) | 0}:t> (${b.ExpiredLabel()})`;
+
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(text).catch((cause) => {
+        _logger.error('Failed to copy timer', cause);
+      });
+    } else {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+      } catch (cause) {
+        console.error('Failed to copy timer', cause);
+      }
+
+      document.body.removeChild(textarea);
+    }
+  };
+
   // Restore all timers on render
   useEffect(() => {
     if (pauseTimestamp) {
@@ -126,72 +158,71 @@ export default function Timer({
         ).join(' ')}
       >
         <TimerLabel
-          className={Styles.Label}
+          className={Styles.TimerLabel}
           dataListId={nodeDataListId}
           name={name}
           setName={setName}
         />
 
-        <div
-          className={Arrays.pack(
-            Layout.Flex,
-            Layout.JustifySpaceBetween,
-            Layout.AlignCenter,
-          ).join(' ')}
-        >
-          <div
-            className={Arrays.pack(
-              Layout.Flex,
-              Layout.JustifyStart,
-              Layout.AlignCenter,
-              Layout.NoWrap,
-            ).join(' ')}
-          >
+        <div className={Styles.TimerContent}>
+          <div className={Styles.TimerDisplay}>
             {remainingMillis < 0 ? (
-              <TimerButton onClick={onClickResetButton}>
+              <IconButton onClick={onClickResetButton}>
                 <XCircle />
                 <SrOnly>
                   <b.ResetButtonLabel />
                 </SrOnly>
-              </TimerButton>
+              </IconButton>
             ) : pauseTimestamp ? (
-              <TimerButton onClick={onClickResumeButton}>
+              <IconButton onClick={onClickResumeButton}>
                 <PlayCircle />
                 <SrOnly>
                   <b.ResumeButtonLabel />
                 </SrOnly>
-              </TimerButton>
+              </IconButton>
             ) : !startTimestamp ? (
-              <TimerButton onClick={onClickStartButton}>
+              <IconButton onClick={onClickStartButton}>
                 <PlayCircle />
                 <SrOnly>
                   <b.StartButtonLabel />
                 </SrOnly>
-              </TimerButton>
+              </IconButton>
             ) : (
-              <TimerButton onClick={onClickPauseButton}>
+              <IconButton onClick={onClickPauseButton}>
                 <PauseCircle />
                 <SrOnly>
                   <b.PauseButtonLabel />
                 </SrOnly>
-              </TimerButton>
+              </IconButton>
             )}
 
-            <Animation
-              display={remainingMillis > 0 && !!pauseTimestamp}
+            <ShowAnimation
+              trigger={remainingMillis > 0 && !!pauseTimestamp}
               expand={Styles.Expand}
               collapse={Styles.Collapse}
             >
-              <TimerButton onClick={onClickResetButton}>
+              <IconButton onClick={onClickResetButton}>
                 <XCircle />
                 <SrOnly>
                   <b.ResetButtonLabel />
                 </SrOnly>
-              </TimerButton>
-            </Animation>
+              </IconButton>
+            </ShowAnimation>
+
+            <ShowAnimation
+              trigger={!!startTimestamp && !pauseTimestamp}
+              expand={Styles.Expand}
+              collapse={Styles.Collapse}
+            >
+              <IconButton onClick={onClickCopyButton}>
+                <BoxArrowUp />
+                <SrOnly>
+                  <b.CopyButtonLabel />
+                </SrOnly>
+              </IconButton>
+            </ShowAnimation>
 
             <TimerDisplay
-              className={Styles.Display}
               remainingMillis={remainingMillis}
               updateRemainingMillis={updateRemainingMillis}
             />

@@ -3,6 +3,7 @@
     background-color: transparent;
     border: 0;
     color: inherit;
+    cursor: pointer;
     font-size: 1.5rem;
     min-height: 2.75rem;
     padding: 0;
@@ -13,6 +14,10 @@
     svg {
       height: 2rem;
       width: 2rem;
+    }
+
+    &:active {
+      color: var(--color-cyan);
     }
   }
 }
