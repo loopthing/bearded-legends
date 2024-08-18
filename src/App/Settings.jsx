@@ -34,7 +34,7 @@ export default function Settings({ className }) {
     versionError,
   ] = useCheckUpdates();
 
-  useEffect(() => checkAppUpdates, []);
+  useEffect(() => void checkAppUpdates(), []);
 
   return (
     <>
