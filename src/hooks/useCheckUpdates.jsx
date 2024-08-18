@@ -7,6 +7,7 @@ export default function useCheckUpdates() {
   const _logger = new Logger('useCheckUpdates');
   const [appVersion, setAppVersion] = useLocalStorage('BL.App.Version');
   const [availableVersion, setAvailableVersion] = useState(null);
+  const [error, setError] = useState(null);
   // const navigate = useNavigate();
 
   async function checkAppUpdates() {
@@ -17,7 +18,8 @@ export default function useCheckUpdates() {
           setAvailableVersion(result.version);
         }
         return result.version;
-      });
+      })
+      .catch(setError);
   }
 
   async function updateApp() {
@@ -31,5 +33,5 @@ export default function useCheckUpdates() {
     window.location.reload();
   }
 
-  return [appVersion, availableVersion, { checkAppUpdates, updateApp }];
+  return [appVersion, availableVersion, { checkAppUpdates, updateApp }, error];
 }

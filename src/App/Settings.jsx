@@ -25,9 +25,14 @@ export default function Settings({ className }) {
   const _logger = new Logger('Settings');
   const b = useContentBundle(content);
 
-  const [, onClickZoomIn, onClickZoomOut, onClickReset] = useZoom();
-  const [appVersion, availableVersion, { checkAppUpdates, updateApp }] =
-    useCheckUpdates();
+  const [fontSize, onClickZoomIn, onClickZoomOut, onClickReset] = useZoom();
+
+  const [
+    appVersion,
+    availableVersion,
+    { checkAppUpdates, updateApp },
+    versionError,
+  ] = useCheckUpdates();
 
   useEffect(() => checkAppUpdates, []);
 
@@ -80,19 +85,21 @@ export default function Settings({ className }) {
         <label>
           App version
           <div>{appVersion}</div>
-          {availableVersion === appVersion && (
-            <div>
-              <CheckCircleFill /> Your app is up-to-date.
-            </div>
+          {versionError ? (
+            <div>Error</div>
+          ) : (
+            availableVersion === appVersion && (
+              <div>
+                <CheckCircleFill /> Your app is up-to-date.
+              </div>
+            )
           )}
         </label>
         {availableVersion !== appVersion && (
           <label>
             Available version
-            <>
-              <div>{availableVersion}</div>
-              <Button onClick={updateApp}>Update your app</Button>
-            </>
+            <div>{availableVersion}</div>
+            <Button onClick={updateApp}>Update your app</Button>
           </label>
         )}
       </div>
