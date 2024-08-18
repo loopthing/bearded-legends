@@ -71,7 +71,7 @@ export default function Settings({ className }) {
             </IconButton>
           </div>
         </label>
-        <label>
+        {/* <label>
           <b.PreviewLabel />
           <div>
             <TimerDisplay
@@ -79,7 +79,7 @@ export default function Settings({ className }) {
               updateRemainingMillis={noop}
             />
           </div>
-        </label>
+        </label> */}
 
         <h2>
           <b.SoftwareUpdateHeader />
