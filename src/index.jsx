@@ -2,15 +2,11 @@ import Logger from '@utils/Logger';
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  useRouteError,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import About from './App/About';
 import App from './App/App';
-import Settings from './App/Settings';
+import Settings from './App/Settings/Settings';
 import WarTimer from './App/WarTimer/WarTimer';
 import './index.css';
 

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 const DEFAULT_FONT_SIZE = 16;
 const INCREMENT = DEFAULT_FONT_SIZE / 4;
+const MINIMUM_FONT_SIZE = DEFAULT_FONT_SIZE - 2 * INCREMENT;
 
 export default function useZoom() {
   const [fontSize, setFontSize] = useLocalStorage(DEFAULT_FONT_SIZE);
@@ -12,7 +13,7 @@ export default function useZoom() {
   };
 
   const zoomOut = (_domEvent) => {
-    setFontSize(Math.round(fontSize - INCREMENT));
+    setFontSize(Math.max(MINIMUM_FONT_SIZE, Math.round(fontSize - INCREMENT)));
   };
 
   const reset = (_domEvent) => {
