@@ -2,14 +2,14 @@
   margin: 0;
   padding: 1rem;
 
+  button[type='button'] {
+    margin-top: 1rem;
+  }
+
   label {
     display: block;
     font-weight: bold;
     margin: 1rem 0 0 0;
-
-    button[type='button'] {
-      margin-top: 1rem;
-    }
 
     & > div {
       display: flex;

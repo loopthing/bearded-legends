@@ -100,7 +100,7 @@ export default function Settings({ className }) {
             )
           )}
         </label>
-        {availableVersion !== appVersion && (
+        {availableVersion !== appVersion ? (
           <label>
             <b.AvailableAppVersionLabel />
             <div>{availableVersion}</div>
@@ -108,6 +108,10 @@ export default function Settings({ className }) {
               <b.UpdateInstructionMessage />
             </Button>
           </label>
+        ) : (
+          <Button onClick={checkAppUpdates}>
+            <b.AppVersionCheckButtonLabel />
+          </Button>
         )}
       </div>
 

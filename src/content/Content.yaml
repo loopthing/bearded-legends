@@ -2,6 +2,7 @@ en:
   AboutButtonLabel: About us
   AccessibilityHeader: Accessibility
   AddButtonLabel: Add
+  AppVersionCheckButtonLabel: Check for updates
   AppVersionLabel: App version
   AppVersionStatusMessage: Your app is up-to-date.
   AvailableAppVersionLabel: Available version
