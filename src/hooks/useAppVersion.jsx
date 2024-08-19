@@ -1,10 +1,13 @@
-import { useLocalStorage } from '@hooks/useStorage';
+// import { useLocalStorage } from '@hooks/useStorage';
 import Logger from '@utils/Logger';
 import { useState } from 'react';
+import pkg from '../../package.json';
+
+const { version: appVersion } = pkg;
 
 export default function useAppVersion() {
   const _logger = new Logger('useAppVersion');
-  const [appVersion, setAppVersion] = useLocalStorage('BL.App.version');
+  // const [appVersion, setAppVersion] = useLocalStorage('BL.App.version');
   const [availableVersion, setAvailableVersion] = useState(null);
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(null);
@@ -30,14 +33,6 @@ export default function useAppVersion() {
   }
 
   async function updateApp() {
-    if (!availableVersion) {
-      await checkUpdates();
-    }
-
-    if (availableVersion) {
-      setAppVersion(availableVersion);
-    }
-
     await new Promise((resolve) => setTimeout(resolve, 400));
     window.location.reload(true);
   }
