@@ -6,7 +6,7 @@ export default function NodeDataList(_props) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('/bearded-legends/database/gw-2024-am.json')
+    fetch('/bearded-legends/database/gw-2024-ls.json')
       .then((res) => res.json())
       .then((data) => setData(data.nodeList))
       .catch((cause) => _logger.error(cause));
