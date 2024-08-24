@@ -1,9 +1,47 @@
 .WarTimerHeader {
-  .Logo {
-    content: '';
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .Left {
+    display: inline-block;
+    flex-basis: 33%;
   }
 
-  .Clock {
-    margin: 0 0.5rem;
+  .Center {
+    display: none;
+    flex-basis: 33%;
+  }
+
+  .Right {
+    display: none;
+    flex-basis: 33%;
+  }
+
+  @media screen and (min-width: 40rem) {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .Left {
+      & > div {
+        padding-left: 0.75rem;
+      }
+    }
+
+    .Center {
+      display: inline-block;
+    }
+
+    .Right {
+      display: flex;
+      justify-content: right;
+
+      & > div {
+        padding-right: 0.75rem;
+      }
+    }
   }
 }
