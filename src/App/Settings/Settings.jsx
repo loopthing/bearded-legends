@@ -18,7 +18,7 @@ export default function Settings({ className }) {
     <>
       <div className={Arrays.pack(className, Styles.Settings)}>
         <h1>
-          <b.SettingsAppName />
+          <b.SettingsScreenName />
         </h1>
 
         <h2>

@@ -45,11 +45,11 @@ export default function App({ className }) {
 
       <Toolbar>
         <Hyperlink className={HyperlinkStyles.Button} href="/war-timer">
-          <b.WarTimerAppName />
+          <b.WarTimerScreenName />
         </Hyperlink>
 
         <Hyperlink className={HyperlinkStyles.Button} href="/settings">
-          <b.SettingsAppName />
+          <b.SettingsScreenName />
         </Hyperlink>
       </Toolbar>
     </>

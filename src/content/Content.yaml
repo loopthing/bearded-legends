@@ -34,13 +34,13 @@ en:
   ResumeButtonLabel: Resume
   Seconds: seconds
   SecondsAbbr: S
-  SettingsAppName: Settings
+  SettingsScreenName: Settings
   SoftwareUpdatesHeader: Software update
   StartButtonLabel: Start
   UpdateButtonLabel: Update your app
   ForceUpdateButtonLabel: Force update your app
   UTC: UTC
-  WarTimerAppName: War Timer
+  WarTimerScreenName: War Timer
   ZoomLabel: Zoom
   ZoomInLabel: Zoom in
   ZoomOutLabel: Zoom out
