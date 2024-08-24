@@ -17,7 +17,8 @@ en:
   DISCORD_CHAT_URL: https://discord.com/channels/1027199394832977992/1065962891355889806
   DoneButtonLabel: Done
   EditButtonLabel: Edit
-  ExpiredLabel: Expired
+  EndsAtMessage: ${timerName} ends at <t:${timestamp}:t> (<t:${timestamp}:R>)
+  ExpiredAtMessage: ${timerName} expired at <t:${timestamp}:t>
   GameName: Knighthood
   GuildName: Bearded Legends
   GuildNameDecorative: ⎯ Bearded ✦ Legends ⎯

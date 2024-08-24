@@ -105,10 +105,11 @@ export default function Timer({
   };
 
   const onClickCopyButton = (_domEvent) => {
+    const timestamp = (endTimestamp / 1000) | 0;
     const text =
       remainingMillis > 0
-        ? `${name} <t:${(endTimestamp / 1000) | 0}:t> (<t:${(endTimestamp / 1000) | 0}:R>)`
-        : `${name} <t:${(endTimestamp / 1000) | 0}:t> (${b.ExpiredLabel()})`;
+        ? b.EndsAtMessage({ timerName: name, timestamp })
+        : b.ExpiredAtMessage({ timerName: name, timestamp });
 
     if (navigator?.clipboard) {
       navigator.clipboard.writeText(text).catch((cause) => {
