@@ -6,17 +6,18 @@
 
   .Left {
     display: inline-block;
-    flex-basis: 33%;
+    flex-basis: 40%;
+    text-align: center;
   }
 
   .Center {
     display: none;
-    flex-basis: 33%;
+    flex-basis: 10%;
   }
 
   .Right {
     display: none;
-    flex-basis: 33%;
+    flex-basis: 40%;
   }
 
   @media screen and (min-width: 40rem) {
@@ -26,6 +27,8 @@
     justify-content: space-between;
 
     .Left {
+      text-align: left;
+
       & > div {
         padding-left: 0.75rem;
       }

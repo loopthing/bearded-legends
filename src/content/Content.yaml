@@ -19,6 +19,7 @@ en:
   EditButtonLabel: Edit
   EndsAtMessage: ${timerName} ends at <t:${timestamp}:t> (<t:${timestamp}:R>)
   EOD: EOD
+  CLOCK_FORMAT_TINY: ${minutes}.${seconds}
   CLOCK_FORMAT_SHORT: ${hours}:${minutes}
   CLOCK_FORMAT_LONG: ${hours}:${minutes}.${seconds}
   ExpiredAtMessage: ${timerName} expired at <t:${timestamp}:t>
@@ -29,7 +30,7 @@ en:
   HomeButtonLabel: Home
   Hours: hours
   HoursAbbr: H
-  MinusSign: -
+  MinusSign: \-
   Minutes: minutes
   MinutesAbbr: M
   PauseButtonLabel: Pause
