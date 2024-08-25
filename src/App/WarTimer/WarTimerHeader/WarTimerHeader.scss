@@ -6,7 +6,7 @@
 
   .Left {
     display: inline-block;
-    flex-basis: 40%;
+    flex-basis: 100%;
     text-align: center;
   }
 
@@ -27,6 +27,7 @@
     justify-content: space-between;
 
     .Left {
+      flex-basis: 40%;
       text-align: left;
 
       & > div {
