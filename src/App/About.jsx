@@ -5,10 +5,11 @@ import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import React from 'react';
 import Toolbar from '../components/Toolbar';
+import useZoom from '../hooks/useZoom';
 import * as Styles from './About.scss';
 import Logo from './Logo';
 import * as LogoStyles from './Logo.scss';
-import useZoom from '../hooks/useZoom';
+import Navigation from './Navigation/Navigation';
 
 export default function App({ className }) {
   const b = useContentBundle(content);
@@ -44,13 +45,7 @@ export default function App({ className }) {
       </div>
 
       <Toolbar>
-        <Hyperlink className={HyperlinkStyles.Button} href="/war-timer">
-          <b.WarTimerScreenName />
-        </Hyperlink>
-
-        <Hyperlink className={HyperlinkStyles.Button} href="/settings">
-          <b.SettingsScreenName />
-        </Hyperlink>
+        <Navigation />
       </Toolbar>
     </>
   );

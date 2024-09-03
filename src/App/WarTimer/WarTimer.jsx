@@ -1,6 +1,4 @@
 import Button from '@components/Button';
-import Hyperlink from '@components/Hyperlink';
-import * as HyperlinkStyles from '@components/Hyperlink.scss';
 import Toolbar from '@components/Toolbar';
 import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
@@ -12,6 +10,7 @@ import React, { useState } from 'react';
 import { Pencil, PlusCircle } from 'react-bootstrap-icons';
 import { v4 as uuidv4 } from 'uuid';
 
+import Navigation from '../Navigation/Navigation';
 import NodeDataList from './NodeDataList';
 import TimerList from './TimerList';
 import * as Styles from './WarTimer.scss';
@@ -52,16 +51,24 @@ export default function WarTimer({ className }) {
       </div>
 
       <Toolbar>
-        <Hyperlink className={HyperlinkStyles.Button} href="/">
-          <b.HomeButtonLabel />
-        </Hyperlink>
+        <Navigation />
         <Button onClick={onClickAddButton}>
           <PlusCircle />
-          <b.AddButtonLabel />
+          <span>
+            <b.AddButtonLabel />
+          </span>
         </Button>
         <Button onClick={onClickEditButton}>
           <Pencil />
-          {!edit ? <b.EditButtonLabel /> : <b.DoneButtonLabel />}
+          {!edit ? (
+            <span>
+              <b.EditButtonLabel />
+            </span>
+          ) : (
+            <span>
+              <b.DoneButtonLabel />
+            </span>
+          )}
         </Button>
       </Toolbar>
     </>

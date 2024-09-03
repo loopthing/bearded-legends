@@ -7,9 +7,7 @@ export default function Toolbar({ className, children }) {
     <div className={Arrays.pack(className, Styles.Toolbar).join(' ')}>
       {React.Children.map(children, (child) =>
         React.cloneElement(child, {
-          className: Arrays.pack(child.props.className, Styles.Button).join(
-            ' ',
-          ),
+          className: child.props.className,
         }),
       )}
     </div>

@@ -1,11 +1,10 @@
-import Hyperlink from '@components/Hyperlink';
-import * as HyperlinkStyles from '@components/Hyperlink.scss';
 import Toolbar from '@components/Toolbar';
 import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 import React from 'react';
+import Navigation from '../Navigation/Navigation';
 import AccessibilitySettings from './AccessibilitySettings';
 import * as Styles from './Settings.scss';
 import SoftwareUpdates from './SoftwareUpdates';
@@ -33,9 +32,7 @@ export default function Settings({ className }) {
       </div>
 
       <Toolbar>
-        <Hyperlink className={HyperlinkStyles.Button} href="/">
-          <b.HomeButtonLabel />
-        </Hyperlink>
+        <Navigation />
       </Toolbar>
     </>
   );

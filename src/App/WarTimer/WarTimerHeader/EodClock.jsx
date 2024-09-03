@@ -41,10 +41,6 @@ export default function EodClock({ className }) {
     <div className={Arrays.pack(className, Styles.Clock).join(' ')}>
       <div className={Styles.Time}>
         <div className={Styles.TimeDisplay}>
-          {/* <span className={Styles.TimeZone}>
-            <b.EOD />
-            <b.MinusSign />
-          </span> */}
           {!!hours && (
             <>
               {hours}

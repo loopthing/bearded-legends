@@ -48,20 +48,21 @@ export default function SoftwareUpdates() {
         )}
       </label>
 
-      {availableVersion !== appVersion && (
+      {/* {availableVersion !== appVersion && (
         <label>
           <Button onClick={updateApp}>
             <b.UpdateButtonLabel />
           </Button>
         </label>
-      )}
+      )} */}
 
-      <Button onClick={checkUpdates}>
+      {/* <Button onClick={checkUpdates}>
         <b.AppVersionCheckButtonLabel />
-      </Button>
+      </Button> */}
 
       <Button onClick={updateApp}>
-        <b.ForceUpdateButtonLabel />
+        <b.UpdateButtonLabel />
+        {/* <b.ForceUpdateButtonLabel /> */}
       </Button>
     </>
   );
