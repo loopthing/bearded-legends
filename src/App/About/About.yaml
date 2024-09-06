@@ -1,6 +1,6 @@
 en:
-  ChatAppInvitationLabel: Not a member?
-  ChatAppInvitationLink: Join our Discord server
+  ChatAppInvitationMessage: Not a member?
+  ChatAppInvitationLinkLabel: Join our Discord server
+  ChatAppInvitationLinkUrl: https://bit.ly/bearded-legends
   ChatAppLinkLabel: Chat
-  CHAT_URL: https://discord.com/channels/1027199394832977992/1065962891355889806
-  CHAT_INVITATION_URL: https://bit.ly/bearded-legends
+  ChatAppLinkUrl: https://discord.com/channels/1027199394832977992/1065962891355889806

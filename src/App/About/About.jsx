@@ -14,10 +14,10 @@ import GlobalContent from '@content/Content.yaml';
 
 export default function App({ className }) {
   const {
-    CHAT_URL,
-    CHAT_INVITATION_URL,
-    ChatAppInvitationLabel,
-    ChatAppInvitationLink,
+    ChatAppLinkUrl,
+    ChatAppInvitationLinkUrl,
+    ChatAppInvitationMessage,
+    ChatAppInvitationLinkLabel,
     ChatAppLinkLabel,
     GuildNameDecorative,
   } = useContentBundle(GlobalContent, AboutContent);
@@ -36,14 +36,14 @@ export default function App({ className }) {
           </p>
         </div>
         <div className={Styles.Chat}>
-          <Hyperlink href={CHAT_URL()} className={HyperlinkStyles.Button}>
+          <Hyperlink href={ChatAppLinkUrl()} className={HyperlinkStyles.Button}>
             <ChatAppLinkLabel />
           </Hyperlink>
           <p>
-            <ChatAppInvitationLabel />
+            <ChatAppInvitationMessage />
             <br />
-            <Hyperlink href={CHAT_INVITATION_URL()}>
-              <ChatAppInvitationLink />
+            <Hyperlink href={ChatAppInvitationLinkUrl()}>
+              <ChatAppInvitationLinkLabel />
             </Hyperlink>
           </p>
         </div>
