@@ -52,12 +52,14 @@ export default function WarTimer({ className }) {
 
       <Toolbar>
         <Navigation />
+
         <Button onClick={onClickAddButton}>
           <PlusCircle />
           <span>
             <b.AddButtonLabel />
           </span>
         </Button>
+
         <Button onClick={onClickEditButton}>
           <Pencil />
           {!edit ? (

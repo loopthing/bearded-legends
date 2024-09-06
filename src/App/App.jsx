@@ -1,19 +1,16 @@
-import content from '@content/Content.yaml';
-import useContentBundle from '@hooks/useContentBundle';
 import useServiceWorker from '@hooks/useServiceWorker';
 import { useLocalStorage } from '@hooks/useStorage';
 import Logger from '@utils/Logger';
 
 import React, { useEffect } from 'react';
 
+import useZoom from '@hooks/useZoom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Styles from './App.scss';
-import useZoom from '@hooks/useZoom';
 import HeartbeatProvider from './HeartbeatProvider';
 
 export default function App({ children }) {
   const _logger = new Logger('App');
-  const _b = useContentBundle(content);
   const location = useLocation();
   const [pathname, setPathname] = useLocalStorage('BL.App.pathname');
   const navigate = useNavigate();

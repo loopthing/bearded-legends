@@ -1,20 +1,9 @@
 en:
   AboutButtonLabel: About us
-  AccessibilitySettingsHeader: Accessibility
   AddButtonLabel: Add
-  AppVersionCheckButtonLabel: Check for updates
-  AppVersionLabel: App version
-  AppVersionErrorMessage: Failed to retrieve available version.
-  AppVersionStatusMessage: Your app is up-to-date.
-  AvailableAppVersionLabel: Available version
   CLOCK_FORMAT: ${hour}:${minute}
-  ChatAppName: Chat
-  ChatAppInvitationLabel_1: Not a member?
-  ChatAppInvitationLabel_2: Join our Discord server
   CopyButtonLabel: Copy
   DefaultTimerName: Timer
-  DISCORD_JOIN_URL: https://bit.ly/bearded-legends
-  DISCORD_CHAT_URL: https://discord.com/channels/1027199394832977992/1065962891355889806
   DoneButtonLabel: Done
   EditButtonLabel: Edit
   EndsAtMessage: ${timerName} ends at <t:${timestamp}:t> (<t:${timestamp}:R>)
@@ -26,8 +15,8 @@ en:
   GameName: Knighthood
   GuildName: Bearded Legends
   GuildNameDecorative: ⎯ Bearded ✦ Legends ⎯
-  # GuildNameDecorative: ✦
   HomeButtonLabel: Home
+  HomeScreenName: Home
   Hours: hours
   HoursAbbr: H
   MinusSign: \-
@@ -42,12 +31,6 @@ en:
   Seconds: seconds
   SecondsAbbr: S
   SettingsScreenName: Settings
-  SoftwareUpdatesHeader: Software update
   StartButtonLabel: Start
-  UpdateButtonLabel: Update your app
-  ForceUpdateButtonLabel: Force update your app
   UTC: UTC
-  WarTimerScreenName: War Timer
-  ZoomLabel: Zoom
-  ZoomInLabel: Zoom in
-  ZoomOutLabel: Zoom out
+  WarTimerScreenName: Timer

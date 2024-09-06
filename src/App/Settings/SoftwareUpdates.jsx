@@ -1,14 +1,20 @@
 import Button from '@components/Button';
-import content from '@content/Content.yaml';
+import content from './Settings.yaml';
 import useAppVersion from '@hooks/useAppVersion';
 import useContentBundle from '@hooks/useContentBundle';
-import Logger from '@utils/Logger';
 import React, { useEffect } from 'react';
 import { CheckCircleFill, ExclamationDiamondFill } from 'react-bootstrap-icons';
 
 export default function SoftwareUpdates() {
-  const _logger = new Logger('SoftwareUpdates');
-  const b = useContentBundle(content);
+  const {
+    SoftwareUpdates: {
+      AppVersionLabel,
+      AvailableAppVersionLabel,
+      SoftwareUpdatesErrorMessage,
+      SoftwareUpdatesStatusMessage,
+      UpdateButtonLabel,
+    },
+  } = useContentBundle(content);
 
   const [
     appVersion,
@@ -22,16 +28,16 @@ export default function SoftwareUpdates() {
   return (
     <>
       <label>
-        <b.AppVersionLabel />
+        <AppVersionLabel />
         <div>{appVersion}</div>
       </label>
       <label>
-        <b.AvailableAppVersionLabel />
+        <AvailableAppVersionLabel />
         {versionError ? (
           <div>
             <ExclamationDiamondFill />
             <span>
-              <b.AppVersionErrorMessage />
+              <SoftwareUpdatesErrorMessage />
             </span>
           </div>
         ) : (
@@ -42,27 +48,14 @@ export default function SoftwareUpdates() {
           <div>
             <CheckCircleFill />
             <span>
-              <b.AppVersionStatusMessage />
+              <SoftwareUpdatesStatusMessage.UpToDate />
             </span>
           </div>
         )}
       </label>
 
-      {/* {availableVersion !== appVersion && (
-        <label>
-          <Button onClick={updateApp}>
-            <b.UpdateButtonLabel />
-          </Button>
-        </label>
-      )} */}
-
-      {/* <Button onClick={checkUpdates}>
-        <b.AppVersionCheckButtonLabel />
-      </Button> */}
-
       <Button onClick={updateApp}>
-        <b.UpdateButtonLabel />
-        {/* <b.ForceUpdateButtonLabel /> */}
+        <UpdateButtonLabel />
       </Button>
     </>
   );

@@ -1,0 +1,14 @@
+en:
+  AccessibilitySettingsHeader: Accessibility
+  AccessibilitySettings:
+    ZoomInButtonLabel: Zoom in
+    ZoomFieldSetLabel: Zoom
+    ZoomOutButtonLabel: Zoom out
+  SoftwareUpdatesHeader: Software update
+  SoftwareUpdates:
+    AppVersionLabel: App version
+    AvailableAppVersionLabel: Available version
+    SoftwareUpdatesErrorMessage: Failed to retrieve available version.
+    SoftwareUpdatesStatusMessage:
+      UpToDate: Your app is up-to-date.
+    UpdateButtonLabel: Update your app

@@ -1,49 +1,62 @@
 import Button from '@components/Button';
 import Hyperlink from '@components/Hyperlink';
-import React, { useState } from 'react';
+import GlobalContent from '@content/Content.yaml';
+import useContentBundle from '@hooks/useContentBundle';
+import React, { useEffect, useState } from 'react';
 import { Clock, Gear, House, List } from 'react-bootstrap-icons';
+import { v4 as uuidv4 } from 'uuid';
 import * as Styles from './Navigation.scss';
+import NavigationContent from './Navigation.yaml';
 
-export default function Navigation() {
-  // const [isOpen, setIsOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navigation({ onClick }) {
+  const [menuId, setMenuId] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const toggleMenu = () => setIsExpanded((x) => !x);
+  const hideMenu = () => setIsExpanded(false);
+  const b = useContentBundle(GlobalContent, NavigationContent);
 
-  const toggleMenu = () => setIsOpen((x) => !x);
-
-  const hideMenu = () => setIsOpen(false);
+  useEffect(() => setMenuId(uuidv4()), []);
 
   return (
-    <nav>
+    <nav onClick={onClick}>
       <Button
+        className={Styles.NavigationButton}
         onClick={toggleMenu}
-        aria-expanded={isOpen}
-        aria-controls="menu"
-        aria-label="Toggle menu"
+        aria-expanded={isExpanded}
+        aria-controls={menuId}
+        aria-label={b.NavigationButtonLabel()}
       >
         <List />
       </Button>
 
       <ul
-        className={`${Styles.Menu} ${isOpen ? Styles.Open : ''}`}
+        className={`${Styles.Menu} ${isExpanded ? Styles.Open : ''}`}
+        id={menuId}
         role="menubar"
-        aria-label="Navigation menu"
+        aria-label={b.NavigationMenuLabel()}
       >
         <li role="none">
-          <Hyperlink role="menuitem" href={'/'} onClick={hideMenu}>
+          <Hyperlink role="menuitem" href="/" onClick={hideMenu}>
             <House />
-            <span>Home</span>
+            <span>
+              <b.HomeScreenName />
+            </span>
           </Hyperlink>
         </li>
         <li role="none">
-          <Hyperlink role="menuitem" href={'/war-timer'} onClick={hideMenu}>
+          <Hyperlink role="menuitem" href="/war-timer" onClick={hideMenu}>
             <Clock />
-            <span>War timer</span>
+            <span>
+              <b.WarTimerScreenName />
+            </span>
           </Hyperlink>
         </li>
         <li role="none">
-          <Hyperlink role="menuitem" href={'/settings'} onClick={hideMenu}>
+          <Hyperlink role="menuitem" href="/settings" onClick={hideMenu}>
             <Gear />
-            <span>Settings</span>
+            <span>
+              <b.SettingsScreenName />
+            </span>
           </Hyperlink>
         </li>
       </ul>

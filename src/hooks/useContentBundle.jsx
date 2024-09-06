@@ -2,6 +2,8 @@ import isComponent from '@utils/isComponent';
 import Logger from '@utils/Logger';
 import noop from '@utils/noop';
 import stringToTemplate from '@utils/stringToTemplate';
+import merge from 'mout/object/merge';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 /**
@@ -47,27 +49,47 @@ export default function useContentBundle(...bundles) {
   const logger = new Logger('useContentBundle');
   const [lang] = navigator.language.split('-');
 
-  const defaultBundle = bundles.reduce((result, bundle) => {
-    const en = bundle.en;
-    return { ...result, ...en };
-  }, {});
+  const defaultBundle = bundles.reduce(
+    (result, bundle) => merge(result, bundle.en),
+    {},
+  );
 
-  const localBundle = bundles.reduce((result, bundle) => {
-    const locale = bundle[lang];
-    return { ...result, ...locale };
-  }, {});
+  const localeBundle = bundles.reduce(
+    (result, bundle) => merge(result, bundle[lang]),
+    {},
+  );
 
-  const bundle = { ...defaultBundle, ...localBundle };
+  const bundle = merge(defaultBundle, localeBundle);
 
-  const properties = Object.entries(bundle).reduce((result, [key, string]) => {
-    result[key] = {
-      get: () => (values) => renderContent(string, values),
-      configurable: false,
-      enumerable: true,
-    };
+  return traverse(bundle);
 
-    return result;
-  }, {});
+  function traverse(object, callback, ...scope) {
+    if (typeof object !== 'object' || object === null) {
+      return object;
+    }
+
+    Object.entries(object).forEach(([key, value]) => {
+      if (typeof value === 'string') {
+        object[key] = (props) => renderContent(value, props);
+      } else {
+        object[key] = traverse(value, callback, ...scope, key);
+      }
+    });
+
+    return new Proxy(object, {
+      get: function (target, prop) {
+        if (prop in target) {
+          return target[prop];
+        }
+
+        logger.warn(
+          `${scope.concat(prop).join('.')} not found. Computed bundle`,
+          bundle,
+        );
+        return noop;
+      },
+    });
+  }
 
   function renderContent(string, props) {
     const values =
@@ -83,18 +105,4 @@ export default function useContentBundle(...bundles) {
 
     return stringToTemplate(string, values);
   }
-
-  const contentBundle = Object.defineProperties({}, properties);
-
-  return new Proxy(contentBundle, {
-    get: function (target, prop) {
-      if (prop in target) {
-        return target[prop];
-      }
-
-      logger.trace(`${prop} not found. Computed bundle`, bundle);
-
-      return noop;
-    },
-  });
 }

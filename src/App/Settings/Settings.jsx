@@ -1,32 +1,35 @@
 import Toolbar from '@components/Toolbar';
-import content from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
-import Logger from '@utils/Logger';
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import AccessibilitySettings from './AccessibilitySettings';
 import * as Styles from './Settings.scss';
+import settingsContent from './Settings.yaml';
 import SoftwareUpdates from './SoftwareUpdates';
+import globalContent from '@content/Content.yaml';
 
 export default function Settings({ className }) {
-  const _logger = new Logger('Settings');
-  const b = useContentBundle(content);
+  const {
+    SettingsScreenName,
+    AccessibilitySettingsHeader,
+    SoftwareUpdatesHeader,
+  } = useContentBundle(globalContent, settingsContent);
 
   return (
     <>
       <div className={Arrays.pack(className, Styles.Settings)}>
         <h1>
-          <b.SettingsScreenName />
+          <SettingsScreenName />
         </h1>
 
         <h2>
-          <b.AccessibilitySettingsHeader />
+          <AccessibilitySettingsHeader />
         </h2>
         <AccessibilitySettings />
 
         <h2>
-          <b.SoftwareUpdatesHeader />
+          <SoftwareUpdatesHeader />
         </h2>
         <SoftwareUpdates />
       </div>

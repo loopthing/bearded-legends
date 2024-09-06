@@ -40,16 +40,14 @@
 
   &.Flip {
     background: linear-gradient(
-      to bottom,
+      to right,
       var(--color-black),
       var(--color-gray-darkest)
     );
     background-color: var(--color-gray-darkest);
-    // border: var(--border-width) solid var(--color-cyan);
   }
 
   .Content {
-    // border: var(--border-width) solid transparent;
     content: '';
   }
 

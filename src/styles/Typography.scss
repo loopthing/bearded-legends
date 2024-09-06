@@ -10,6 +10,14 @@
   font-size: 1rem;
 }
 
+button {
+  font-size: 0.875rem;
+
+  * {
+    font-size: 0.875rem;
+  }
+}
+
 body {
   font-size: 16px;
 }
