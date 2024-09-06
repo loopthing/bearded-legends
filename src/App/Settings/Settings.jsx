@@ -1,4 +1,5 @@
 import Toolbar from '@components/Toolbar';
+import globalContent from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import React from 'react';
@@ -7,7 +8,6 @@ import AccessibilitySettings from './AccessibilitySettings';
 import * as Styles from './Settings.scss';
 import settingsContent from './Settings.yaml';
 import SoftwareUpdates from './SoftwareUpdates';
-import globalContent from '@content/Content.yaml';
 
 export default function Settings({ className }) {
   const {

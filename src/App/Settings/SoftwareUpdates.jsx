@@ -1,9 +1,9 @@
 import Button from '@components/Button';
-import content from './Settings.yaml';
 import useAppVersion from '@hooks/useAppVersion';
 import useContentBundle from '@hooks/useContentBundle';
 import React, { useEffect } from 'react';
 import { CheckCircleFill, ExclamationDiamondFill } from 'react-bootstrap-icons';
+import content from './Settings.yaml';
 
 export default function SoftwareUpdates() {
   const {

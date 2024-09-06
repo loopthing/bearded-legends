@@ -1,5 +1,6 @@
 import Hyperlink from '@components/Hyperlink';
 import * as HyperlinkStyles from '@components/Hyperlink.scss';
+import GlobalContent from '@content/Content.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import React from 'react';
@@ -10,7 +11,6 @@ import * as LogoStyles from '../Logo.scss';
 import Navigation from '../Navigation/Navigation';
 import * as Styles from './About.scss';
 import AboutContent from './About.yaml';
-import GlobalContent from '@content/Content.yaml';
 
 export default function App({ className }) {
   const {
