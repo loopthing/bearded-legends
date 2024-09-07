@@ -1,7 +1,7 @@
 import dateTimeContent from '@content/DateTime.yaml';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
 import * as Styles from './UtcClock.scss';
@@ -29,7 +29,7 @@ export default function UtcClock({ className }) {
   }, [tick]);
 
   return (
-    <div className={Arrays.pack(className, Styles.Clock).join(' ')}>
+    <div className={DOM.classNames(className, Styles.Clock)}>
       <div className={Styles.Time}>
         <div className={Styles.TimeDisplay}>
           <CLOCK_FORMAT_SHORT hours={hours} minutes={minutes} />

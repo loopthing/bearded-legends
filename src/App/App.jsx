@@ -1,10 +1,8 @@
 import useServiceWorker from '@hooks/useServiceWorker';
 import { useLocalStorage } from '@hooks/useStorage';
-import Logger from '@utils/Logger';
-
-import React, { useEffect } from 'react';
-
 import useZoom from '@hooks/useZoom';
+import Logger from '@utils/Logger';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Styles from './App.scss';
 import HeartbeatProvider from './HeartbeatProvider';

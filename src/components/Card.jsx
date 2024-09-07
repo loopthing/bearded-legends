@@ -1,6 +1,6 @@
 import useSwipe from '@hooks/useSwipe';
 import * as Layout from '@styles/Layout.scss';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Card.scss';
 
@@ -26,34 +26,28 @@ export default function Card({ className, children, edit: _edit }) {
 
   return (
     <div
-      className={Arrays.pack(className, Styles.Card, edit && Styles.Flip).join(
-        ' ',
-      )}
+      className={DOM.classNames(className, Styles.Card, edit && Styles.Flip)}
       ref={swipeRef}
     >
       <div
-        className={Arrays.pack(
+        className={DOM.classNames(
           Styles.Content,
           Layout.FlexRow,
           Layout.JustifySpaceBetween,
           Layout.AlignStart,
-        ).join(' ')}
+        )}
       >
-        <div
-          className={Arrays.pack(Styles.Front, edit && Styles.Collapse).join(
-            ' ',
-          )}
-        >
+        <div className={DOM.classNames(Styles.Front, edit && Styles.Collapse)}>
           {frontChildren}
         </div>
 
         <div
-          className={Arrays.pack(
+          className={DOM.classNames(
             Styles.SlideIn,
             Layout.FlexRow,
             Layout.JustifyEnd,
             edit && Styles.Open,
-          ).join(' ')}
+          )}
         >
           {slideInChildren}
         </div>
@@ -65,5 +59,5 @@ export default function Card({ className, children, edit: _edit }) {
 Card.SlideIn = SlideIn;
 
 function SlideIn({ className, children }) {
-  return <div className={Arrays.pack(className).join(' ')}>{children}</div>;
+  return <div className={DOM.classNames(className)}>{children}</div>;
 }

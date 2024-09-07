@@ -2,7 +2,7 @@ import Hyperlink from '@components/Hyperlink';
 import * as HyperlinkStyles from '@components/Hyperlink.scss';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import React from 'react';
 import Toolbar from '../../components/Toolbar';
 import useZoom from '../../hooks/useZoom';
@@ -26,10 +26,8 @@ export default function App({ className }) {
 
   return (
     <>
-      <div className={Arrays.pack(className, Styles.About).join(' ')}>
-        <Logo
-          className={Arrays.pack(Styles.Logo, LogoStyles.Largest).join(' ')}
-        />
+      <div className={DOM.classNames(className, Styles.About)}>
+        <Logo className={DOM.classNames(Styles.Logo, LogoStyles.Largest)} />
         <div>
           <p>
             <GuildNameDecorative />

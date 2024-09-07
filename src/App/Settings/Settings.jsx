@@ -1,7 +1,7 @@
 import Toolbar from '@components/Toolbar';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import AccessibilitySettings from './AccessibilitySettings';
@@ -18,7 +18,7 @@ export default function Settings({ className }) {
 
   return (
     <>
-      <div className={Arrays.pack(className, Styles.Settings)}>
+      <div className={DOM.classNames(className, Styles.Settings)}>
         <h1>
           <SettingsScreenName />
         </h1>

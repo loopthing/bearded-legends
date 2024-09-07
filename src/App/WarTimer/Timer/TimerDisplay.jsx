@@ -3,7 +3,7 @@ import dateTimeContent from '@content/DateTime.yaml';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import * as Layout from '@styles/Layout.scss';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useEffect, useRef, useState } from 'react';
 import warTimerContent from '../WarTimer.yaml';
@@ -101,13 +101,13 @@ export default function TimerDisplay({
   return (
     <div
       ref={ref}
-      className={Arrays.pack(
+      className={DOM.classNames(
         className,
         Styles.TimerDisplay,
         Layout.FlexRow,
         Layout.JustifyStart,
         Layout.AlignBaseline,
-      ).join(' ')}
+      )}
     >
       {!!hours && (
         <>

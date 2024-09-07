@@ -1,9 +1,7 @@
 import Logger from '@utils/Logger';
-
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import About from './App/About/About';
 import App from './App/App';
 import Settings from './App/Settings/Settings';

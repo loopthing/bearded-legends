@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import * as Styles from './Hyperlink.scss';
 
 export default function Hyperlink({ className, children, href, onClick }) {
   return /^https:/.test(href) ? (
     <a
-      className={Arrays.pack(Styles.Hyperlink, className).join(' ')}
+      className={DOM.classNames(Styles.Hyperlink, className)}
       href={href}
       onClick={onClick}
     >
@@ -14,7 +14,7 @@ export default function Hyperlink({ className, children, href, onClick }) {
     </a>
   ) : (
     <RouterLink
-      className={Arrays.pack(Styles.Hyperlink, className).join(' ')}
+      className={DOM.classNames(Styles.Hyperlink, className)}
       to={href}
       onClick={onClick}
     >

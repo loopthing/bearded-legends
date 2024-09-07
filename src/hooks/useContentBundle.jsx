@@ -3,7 +3,6 @@ import Logger from '@utils/Logger';
 import noop from '@utils/noop';
 import stringToTemplate from '@utils/stringToTemplate';
 import merge from 'mout/object/merge';
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 /**

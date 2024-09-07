@@ -3,7 +3,7 @@ import Toolbar from '@components/Toolbar';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import { useLocalStorage } from '@hooks/useStorage';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useState } from 'react';
 import { Pencil, PlusCircle } from 'react-bootstrap-icons';
@@ -46,7 +46,7 @@ export default function WarTimer({ className }) {
 
   return (
     <>
-      <div className={Arrays.pack(className, Styles.WarTimer).join(' ')}>
+      <div className={DOM.classNames(className, Styles.WarTimer)}>
         <WarTimerHeader />
         <TimerList timers={timers} setTimers={setTimers} edit={edit} />
         <NodeDataList />

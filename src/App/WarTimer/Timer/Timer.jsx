@@ -3,7 +3,7 @@ import ShowAnimation from '@components/ShowAnimation';
 import SrOnly from '@components/SrOnly';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useEffect, useState } from 'react';
 import {
@@ -12,7 +12,6 @@ import {
   PlayCircle,
   XCircle,
 } from 'react-bootstrap-icons';
-
 import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './Timer.scss';
 import TimerDisplay from './TimerDisplay';
@@ -154,15 +153,15 @@ export default function Timer({
   }, [tick]);
 
   return (
-    <div className={Arrays.pack(className, Styles.Timer).join(' ')}>
+    <div className={DOM.classNames(className, Styles.Timer)}>
       <div
-        className={Arrays.pack(
+        className={DOM.classNames(
           pauseTimestamp && Styles.Paused,
           startTimestamp && Styles.Started,
           !startTimestamp && Styles.Paused,
           remainingMillis < WARNING_REMAINING_MILLIS && Styles.Warning,
           remainingMillis < 0 && Styles.Expired,
-        ).join(' ')}
+        )}
       >
         <TimerLabel
           className={Styles.TimerLabel}
