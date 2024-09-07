@@ -1,16 +1,20 @@
 import Button from '@components/Button';
 import Card from '@components/Card';
-import content from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Logger from '@utils/Logger';
 import React, { useContext } from 'react';
 import { HeartbeatContext } from '../HeartbeatProvider';
 import Timer from './Timer/Timer';
 import * as Styles from './TimerList.scss';
+import warTimerContent from './WarTimer.yaml';
 
 export default function TimerList({ timers, edit, setTimers }) {
   const _logger = new Logger('WarTimer');
-  const b = useContentBundle(content);
+  const { RemoveButtonLabel } = useContentBundle(
+    globalContent,
+    warTimerContent,
+  );
   const { tick } = useContext(HeartbeatContext);
 
   return (
@@ -40,7 +44,7 @@ export default function TimerList({ timers, edit, setTimers }) {
                   ]);
                 }}
               >
-                <b.RemoveButtonLabel />
+                <RemoveButtonLabel />
               </Button>
             </Card.SlideIn>
           </Card>

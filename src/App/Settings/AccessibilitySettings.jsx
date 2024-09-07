@@ -1,5 +1,5 @@
 import Button from '@components/Button';
-import globalContent from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import useZoom from '@hooks/useZoom';
 import Logger from '@utils/Logger';

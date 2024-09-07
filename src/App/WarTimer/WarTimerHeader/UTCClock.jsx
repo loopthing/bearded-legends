@@ -1,14 +1,20 @@
-import content from '@content/Content.yaml';
+import dateTimeContent from '@content/DateTime.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
 import * as Styles from './UtcClock.scss';
 import { HeartbeatContext } from '../../HeartbeatProvider';
+import warTimerContent from '../WarTimer.yaml';
 
 export default function UtcClock({ className }) {
   const _logger = new Logger('UtcClock');
-  const b = useContentBundle(content);
+  const { CLOCK_FORMAT_SHORT, UTC } = useContentBundle(
+    globalContent,
+    dateTimeContent,
+    warTimerContent,
+  );
   const [hours, setHours] = useState('0');
   const [minutes, setMinutes] = useState('00');
   const { tick } = useContext(HeartbeatContext);
@@ -26,9 +32,9 @@ export default function UtcClock({ className }) {
     <div className={Arrays.pack(className, Styles.Clock).join(' ')}>
       <div className={Styles.Time}>
         <div className={Styles.TimeDisplay}>
-          <b.CLOCK_FORMAT_SHORT hours={hours} minutes={minutes} />
+          <CLOCK_FORMAT_SHORT hours={hours} minutes={minutes} />
           <span className={Styles.TimeZone}>
-            <b.UTC />
+            <UTC />
           </span>
         </div>
       </div>

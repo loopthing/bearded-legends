@@ -1,12 +1,13 @@
-import content from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Logger from '@utils/Logger';
 import React, { useRef } from 'react';
 import * as Styles from './TimerLabel.scss';
+import warTimerContent from '../WarTimer.yaml';
 
 export default function TimerLabel({ name, setName, dataListId }) {
   const _logger = new Logger('TimerLabel');
-  const b = useContentBundle(content);
+  const { DefaultTimerName } = useContentBundle(globalContent, warTimerContent);
   const inputRef = useRef(null);
 
   const onFocus = (_domEvent) => {
@@ -33,7 +34,7 @@ export default function TimerLabel({ name, setName, dataListId }) {
         autoCorrect={'false'}
         spellCheck={false}
         list={dataListId}
-        placeholder={b.DefaultTimerName()}
+        placeholder={DefaultTimerName()}
         onChange={onChange}
         onFocus={onFocus}
         onKeyUp={onKeyUp}

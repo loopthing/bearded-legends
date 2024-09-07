@@ -1,0 +1,13 @@
+en:
+  HoursLabel: hours
+  HoursLabelAbbr: H
+  MinutesLabel: minutes
+  MinutesLabelAbbr: M
+  SecondsLabel: seconds
+  SecondsLabelAbbr: S
+  CLOCK_FORMAT: ${hour}:${minute}
+  CLOCK_FORMAT_TINY: ${minutes}.${seconds}
+  CLOCK_FORMAT_SHORT: ${hours}:${minutes}
+  CLOCK_FORMAT_LONG: ${hours}:${minutes}.${seconds}
+  UTC: UTC
+  EOD: EOD

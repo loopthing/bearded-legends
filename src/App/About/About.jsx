@@ -1,6 +1,6 @@
 import Hyperlink from '@components/Hyperlink';
 import * as HyperlinkStyles from '@components/Hyperlink.scss';
-import GlobalContent from '@content/Content.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import React from 'react';

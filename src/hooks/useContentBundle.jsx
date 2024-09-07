@@ -11,7 +11,7 @@ import { renderToString } from 'react-dom/server';
  *
  *  My.jsx
  *  ------
- *  import appContent from '@content/Content.yaml';
+ *  import appContent from '@content/Global.yaml';
  *  import myContent from './My.yaml';
  *
  *  export default function My(props) {
@@ -22,7 +22,7 @@ import { renderToString } from 'react-dom/server';
  *    );
  *  }
  *
- *  Content.yaml
+ *  Global.yaml
  *  --------
  *  en:
  *    Greeting: Hello, ${name}!
@@ -34,16 +34,16 @@ import { renderToString } from 'react-dom/server';
  *  en:
  *    Greeting: Hi, ${name}!
  *
- * In above example, My.yaml will generally supersede Content.yaml while giving
+ * In above example, My.yaml will generally supersede Global.yaml while giving
  * localized content precedence.
  *
  * A user in 'en' locale (default) will see Hi, World!
  * A user in 'es' locale will see ¡Hola, World!
  * A user in 'de' locale will see Hi, World!
  *
- * This is because there is en specific content in My.yaml overriding Content.yaml,
+ * This is because there is en specific content in My.yaml overriding Global.yaml,
  * but for es locale, My.yaml does not have any es specific content to override
- * the one provided by Content.yaml.
+ * the one provided by Global.yaml.
  */
 export default function useContentBundle(...bundles) {
   const logger = new Logger('useContentBundle');

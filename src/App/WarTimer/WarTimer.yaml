@@ -1,0 +1,7 @@
+en:
+  PauseButtonLabel: Pause
+  ResumeButtonLabel: Resume
+  StartButtonLabel: Start
+  DefaultTimerName: Timer
+  EndsAtMessage: ${timerName} ends at <t:${timestamp}:t> (<t:${timestamp}:R>)
+  ExpiredAtMessage: ${timerName} expired at <t:${timestamp}:t>

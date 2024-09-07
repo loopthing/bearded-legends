@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 import Hyperlink from '@components/Hyperlink';
-import GlobalContent from '@content/Content.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import React, { useEffect, useState } from 'react';
 import { Clock, Gear, House, List } from 'react-bootstrap-icons';

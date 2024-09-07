@@ -1,14 +1,23 @@
-import content from '@content/Content.yaml';
+import dateTimeContent from '@content/DateTime.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
-import * as Styles from './UtcClock.scss';
 import { HeartbeatContext } from '../../HeartbeatProvider';
+import warTimerContent from '../WarTimer.yaml';
+import * as Styles from './UtcClock.scss';
 
 export default function EodClock({ className }) {
   const _logger = new Logger('EodClock');
-  const b = useContentBundle(content);
+  const {
+    HoursLabel,
+    HoursLabelAbbr,
+    MinutesLabel,
+    MinutesLabelAbbr,
+    SecondsLabel,
+    SecondsLabelAbbr,
+  } = useContentBundle(globalContent, dateTimeContent, warTimerContent);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -44,23 +53,23 @@ export default function EodClock({ className }) {
           {!!hours && (
             <>
               {hours}
-              <abbr title={b.Hours()}>
-                <b.HoursAbbr />
+              <abbr title={HoursLabel()}>
+                <HoursLabelAbbr />
               </abbr>
             </>
           )}
           {(!!hours || !!minutes) && (
             <>
               {minutes}
-              <abbr title={b.Minutes()}>
-                <b.MinutesAbbr />
+              <abbr title={MinutesLabel()}>
+                <MinutesLabelAbbr />
               </abbr>
             </>
           )}
           <span className={Styles.Seconds}>
             {seconds}
-            <abbr title={b.Seconds()}>
-              <b.SecondsAbbr />
+            <abbr title={SecondsLabel()}>
+              <SecondsLabelAbbr />
             </abbr>
           </span>
         </div>

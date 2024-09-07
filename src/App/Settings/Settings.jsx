@@ -1,5 +1,5 @@
 import Toolbar from '@components/Toolbar';
-import globalContent from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Arrays from '@utils/Arrays';
 import React from 'react';

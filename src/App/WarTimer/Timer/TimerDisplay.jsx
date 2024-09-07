@@ -1,12 +1,12 @@
 import SrOnly from '@components/SrOnly';
-import content from '@content/Content.yaml';
+import dateTimeContent from '@content/DateTime.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import * as Layout from '@styles/Layout.scss';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
-
 import React, { useEffect, useRef, useState } from 'react';
-
+import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './TimerDisplay.scss';
 
 export default function TimerDisplay({
@@ -15,7 +15,14 @@ export default function TimerDisplay({
   updateRemainingMillis,
 }) {
   const _logger = new Logger('TimerDisplay');
-  const b = useContentBundle(content);
+  const {
+    HoursLabel,
+    HoursLabelAbbr,
+    MinutesLabel,
+    MinutesLabelAbbr,
+    SecondsLabel,
+    SecondsLabelAbbr,
+  } = useContentBundle(globalContent, dateTimeContent, warTimerContent);
   const ref = useRef(null);
   const dirtyRef = useRef({});
 
@@ -119,13 +126,13 @@ export default function TimerDisplay({
                 onKeyUp={onKeyUp}
               />
               <SrOnly>
-                <b.Hours />
+                <HoursLabel />
               </SrOnly>
             </label>
           </div>
 
-          <abbr title={b.Hours()}>
-            <b.HoursAbbr />
+          <abbr title={HoursLabel()}>
+            <HoursLabelAbbr />
           </abbr>
         </>
       )}
@@ -150,13 +157,13 @@ export default function TimerDisplay({
           />
 
           <SrOnly>
-            <b.Minutes />
+            <MinutesLabel />
           </SrOnly>
         </label>
       </div>
 
-      <abbr title={b.Minutes()}>
-        <b.MinutesAbbr />
+      <abbr title={MinutesLabel()}>
+        <MinutesLabelAbbr />
       </abbr>
 
       <div className={Styles.Seconds}>
@@ -177,13 +184,13 @@ export default function TimerDisplay({
           />
 
           <SrOnly>
-            <b.Seconds />
+            <SecondsLabel />
           </SrOnly>
         </label>
       </div>
 
-      <abbr title={b.Seconds()}>
-        <b.SecondsAbbr />
+      <abbr title={SecondsLabel()}>
+        <SecondsLabelAbbr />
       </abbr>
     </div>
   );

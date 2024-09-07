@@ -1,26 +1,28 @@
 import Button from '@components/Button';
 import Toolbar from '@components/Toolbar';
-import content from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import { useLocalStorage } from '@hooks/useStorage';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
-
 import React, { useState } from 'react';
 import { Pencil, PlusCircle } from 'react-bootstrap-icons';
 import { v4 as uuidv4 } from 'uuid';
-
 import Navigation from '../Navigation/Navigation';
 import NodeDataList from './NodeDataList';
 import TimerList from './TimerList';
 import * as Styles from './WarTimer.scss';
+import warTimerContent from './WarTimer.yaml';
 import WarTimerHeader from './WarTimerHeader/WarTimerHeader';
 
 const DEFAULT_REMAINING_MILLIS = 1_800_000;
 
 export default function WarTimer({ className }) {
   const _logger = new Logger('WarTimer');
-  const b = useContentBundle(content);
+  const { AddButtonLabel, DoneButtonLabel, EditButtonLabel } = useContentBundle(
+    globalContent,
+    warTimerContent,
+  );
   const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
   const [edit, setEdit] = useState(false);
 
@@ -56,7 +58,7 @@ export default function WarTimer({ className }) {
         <Button onClick={onClickAddButton}>
           <PlusCircle />
           <span>
-            <b.AddButtonLabel />
+            <AddButtonLabel />
           </span>
         </Button>
 
@@ -64,11 +66,11 @@ export default function WarTimer({ className }) {
           <Pencil />
           {!edit ? (
             <span>
-              <b.EditButtonLabel />
+              <EditButtonLabel />
             </span>
           ) : (
             <span>
-              <b.DoneButtonLabel />
+              <DoneButtonLabel />
             </span>
           )}
         </Button>

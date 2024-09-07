@@ -1,21 +1,19 @@
-import ShowAnimation from '@components/ShowAnimation';
 import IconButton from '@components/IconButton';
+import ShowAnimation from '@components/ShowAnimation';
 import SrOnly from '@components/SrOnly';
-import content from '@content/Content.yaml';
+import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
-import * as Layout from '@styles/Layout.scss';
 import Arrays from '@utils/Arrays';
 import Logger from '@utils/Logger';
-
 import React, { useEffect, useState } from 'react';
 import {
   BoxArrowUp,
-  Copy,
   PauseCircle,
   PlayCircle,
   XCircle,
 } from 'react-bootstrap-icons';
 
+import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './Timer.scss';
 import TimerDisplay from './TimerDisplay';
 import TimerLabel from './TimerLabel';
@@ -31,7 +29,15 @@ export default function Timer({
   setTimer,
 }) {
   const _logger = new Logger('Timer');
-  const b = useContentBundle(content);
+  const {
+    CopyButtonLabel,
+    PauseButtonLabel,
+    ResetButtonLabel,
+    ResumeButtonLabel,
+    StartButtonLabel,
+    EndsAtMessage,
+    ExpiredAtMessage,
+  } = useContentBundle(globalContent, warTimerContent);
 
   const { name, startTimestamp, pauseTimestamp, endTimestamp } = timer;
 
@@ -108,8 +114,8 @@ export default function Timer({
     const timestamp = (endTimestamp / 1000) | 0;
     const text =
       remainingMillis > 0
-        ? b.EndsAtMessage({ timerName: name, timestamp })
-        : b.ExpiredAtMessage({ timerName: name, timestamp });
+        ? EndsAtMessage({ timerName: name, timestamp })
+        : ExpiredAtMessage({ timerName: name, timestamp });
 
     if (navigator?.clipboard) {
       navigator.clipboard.writeText(text).catch((cause) => {
@@ -171,28 +177,28 @@ export default function Timer({
               <IconButton onClick={onClickResetButton}>
                 <XCircle />
                 <SrOnly>
-                  <b.ResetButtonLabel />
+                  <ResetButtonLabel />
                 </SrOnly>
               </IconButton>
             ) : pauseTimestamp ? (
               <IconButton onClick={onClickResumeButton}>
                 <PlayCircle />
                 <SrOnly>
-                  <b.ResumeButtonLabel />
+                  <ResumeButtonLabel />
                 </SrOnly>
               </IconButton>
             ) : !startTimestamp ? (
               <IconButton onClick={onClickStartButton}>
                 <PlayCircle />
                 <SrOnly>
-                  <b.StartButtonLabel />
+                  <StartButtonLabel />
                 </SrOnly>
               </IconButton>
             ) : (
               <IconButton onClick={onClickPauseButton}>
                 <PauseCircle />
                 <SrOnly>
-                  <b.PauseButtonLabel />
+                  <PauseButtonLabel />
                 </SrOnly>
               </IconButton>
             )}
@@ -205,7 +211,7 @@ export default function Timer({
               <IconButton onClick={onClickResetButton}>
                 <XCircle />
                 <SrOnly>
-                  <b.ResetButtonLabel />
+                  <ResetButtonLabel />
                 </SrOnly>
               </IconButton>
             </ShowAnimation>
@@ -218,7 +224,7 @@ export default function Timer({
               <IconButton onClick={onClickCopyButton}>
                 <BoxArrowUp />
                 <SrOnly>
-                  <b.CopyButtonLabel />
+                  <CopyButtonLabel />
                 </SrOnly>
               </IconButton>
             </ShowAnimation>
