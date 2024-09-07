@@ -43,8 +43,8 @@ module.exports = {
             options: {
               url: true,
               modules: {
-                // localIdentName: '[local]__[hash:base64:5]',
-                localIdentName: '[name]-[local]',
+                localIdentName: '[local]__[hash:base64:5]',
+                // localIdentName: '[name]-[local]',
               },
             },
           },

@@ -1,17 +1,16 @@
-import Arrays from '@utils/Arrays';
+import DOM from '@utils/DOM';
 import React from 'react';
 import * as Styles from './Button.scss';
-import DOM from '@utils/DOM';
 
 export default function Button({ className, children, onClick }) {
-  const aria = DOM.attr.getAria(arguments[0]);
+  const attr = DOM.attr(arguments[0]);
 
   return (
     <button
-      className={Arrays.pack(className, Styles.Button).join(' ')}
+      className={DOM.classNames(className, Styles.Button)}
       type="button"
       onClick={onClick}
-      {...aria}
+      {...attr}
     >
       {children}
     </button>
