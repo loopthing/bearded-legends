@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import DOM from '@utils/DOM';
-import * as Styles from './Hyperlink.scss';
+import * as Styles from './Link.scss';
 
-export default function Hyperlink({ className, children, href, onClick }) {
+export default function Link({ className, children, href, onClick }) {
   return /^https:/.test(href) ? (
     <a
-      className={DOM.classNames(Styles.Hyperlink, className)}
+      className={DOM.classNames(Styles.Link, className)}
       href={href}
       onClick={onClick}
     >
@@ -14,7 +14,7 @@ export default function Hyperlink({ className, children, href, onClick }) {
     </a>
   ) : (
     <RouterLink
-      className={DOM.classNames(Styles.Hyperlink, className)}
+      className={DOM.classNames(Styles.Link, className)}
       to={href}
       onClick={onClick}
     >

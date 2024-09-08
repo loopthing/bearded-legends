@@ -1,5 +1,5 @@
-import Hyperlink from '@components/Hyperlink';
-import * as HyperlinkStyles from '@components/Hyperlink.scss';
+import Link from '@components/Link';
+import * as HyperlinkStyles from '@components/Link.scss';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import DOM from '@utils/DOM';
@@ -34,15 +34,15 @@ export default function App({ className }) {
           </p>
         </div>
         <div className={Styles.Chat}>
-          <Hyperlink href={ChatAppLinkUrl()} className={HyperlinkStyles.Button}>
+          <Link href={ChatAppLinkUrl()} className={HyperlinkStyles.Button}>
             <ChatAppLinkLabel />
-          </Hyperlink>
+          </Link>
           <p>
             <ChatAppInvitationMessage />
             <br />
-            <Hyperlink href={ChatAppInvitationLinkUrl()}>
+            <Link href={ChatAppInvitationLinkUrl()}>
               <ChatAppInvitationLinkLabel />
-            </Hyperlink>
+            </Link>
           </p>
         </div>
       </div>
