@@ -1,3 +1,4 @@
+import '@styles/Color.scss';
 import '@styles/Typography.scss';
 import Logger from '@utils/Logger';
 import React from 'react';

@@ -3,6 +3,7 @@ import * as Layout from '@styles/Layout.scss';
 import DOM from '@utils/DOM';
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Card.scss';
+import * as AnimationStyles from '@styles/Animation.scss';
 
 export default function Card({ className, children, edit: _edit }) {
   const [swipeRef, swipe] = useSwipe();
@@ -26,7 +27,12 @@ export default function Card({ className, children, edit: _edit }) {
 
   return (
     <div
-      className={DOM.classNames(className, Styles.Card, edit && Styles.Flip)}
+      className={DOM.classNames(
+        className,
+        Styles.Card,
+        AnimationStyles.Shimmer,
+        edit && Styles.Flip,
+      )}
       ref={swipeRef}
     >
       <div
