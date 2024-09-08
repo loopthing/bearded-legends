@@ -1,10 +1,10 @@
-import Link from '@components/Link';
-import * as HyperlinkStyles from '@components/Link.scss';
+import Link, { ButtonLink } from '@components/Link';
+import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
+import * as AnimationStyles from '@styles/Animation.scss';
 import DOM from '@utils/DOM';
 import React from 'react';
-import Toolbar from '../../components/Toolbar';
 import useZoom from '../../hooks/useZoom';
 import Logo from '../Logo';
 import * as LogoStyles from '../Logo.scss';
@@ -34,13 +34,16 @@ export default function App({ className }) {
           </p>
         </div>
         <div className={Styles.Chat}>
-          <Link href={ChatAppLinkUrl()} className={HyperlinkStyles.Button}>
+          <ButtonLink href={ChatAppLinkUrl()}>
             <ChatAppLinkLabel />
-          </Link>
+          </ButtonLink>
           <p>
             <ChatAppInvitationMessage />
             <br />
-            <Link href={ChatAppInvitationLinkUrl()}>
+            <Link
+              href={ChatAppInvitationLinkUrl()}
+              className={AnimationStyles.BounceOnHover}
+            >
               <ChatAppInvitationLinkLabel />
             </Link>
           </p>
