@@ -1,6 +1,6 @@
 {
   "name": "bearded-legends",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Bearded Legends",
   "main": "index.js",
   "author": "Loopthing",
@@ -23,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-hammerjs": "^1.0.1",
     "react-router-dom": "^6.26.0",
+    "reset-css": "^5.0.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
