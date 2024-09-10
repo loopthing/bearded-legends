@@ -11,8 +11,11 @@ import * as Styles from './TimerDisplay.scss';
 
 export default function TimerDisplay({
   className,
-  remainingMillis,
+  remainingMillis = 1_800_000,
   updateRemainingMillis,
+  showHours = false,
+  showMinutes = true,
+  showSeconds = true,
 }) {
   const _logger = new Logger('TimerDisplay');
   const {
@@ -53,9 +56,9 @@ export default function TimerDisplay({
   const onFocus = (domEvent) => {
     const { target } = domEvent;
 
-    setHoursBuffer(hours);
-    setMinutesBuffer(minutes);
-    setSecondsBuffer(seconds);
+    setHoursBuffer(hours === 0 ? '' : hours);
+    setMinutesBuffer(minutes === 0 ? '' : minutes);
+    setSecondsBuffer(seconds === 0 ? '' : seconds);
 
     setTimeout(() => {
       target.selectionStart = target.selectionEnd = target.value.length;
@@ -109,15 +112,15 @@ export default function TimerDisplay({
         Layout.AlignBaseline,
       )}
     >
-      {!!hours && (
+      {(showHours || hours !== 0) && (
         <>
           <div className={Styles.Hours}>
-            {hours}
+            {showHours ? String(hours || 0).padStart(2, '0') : hours}
             <label>
               <input
                 type="text"
                 inputMode="numeric"
-                maxLength={String(hours).length}
+                maxLength={2}
                 pattern="[0-9]*"
                 value={hoursBuffer}
                 onChange={onChange}
@@ -137,61 +140,69 @@ export default function TimerDisplay({
         </>
       )}
 
-      <div className={Styles.Minutes}>
-        {hours
-          ? String(minutes || 0).padStart(2, '0')
-          : String(minutes || 0).padStart(2, '0')}
+      {(showMinutes || hours !== 0) && (
+        <>
+          <div className={Styles.Minutes}>
+            {hours
+              ? String(minutes || 0).padStart(2, '0')
+              : String(minutes || 0).padStart(2, '0')}
 
-        <label>
-          <input
-            type="text"
-            inputMode="numeric"
-            maxLength="2"
-            pattern="[0-9]*"
-            value={minutesBuffer}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onSubmit={onBlur}
-            onKeyUp={onKeyUp}
-          />
+            <label>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength="2"
+                pattern="[0-9]*"
+                value={minutesBuffer}
+                onChange={onChange}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onSubmit={onBlur}
+                onKeyUp={onKeyUp}
+              />
 
-          <SrOnly>
-            <MinutesLabel />
-          </SrOnly>
-        </label>
-      </div>
+              <SrOnly>
+                <MinutesLabel />
+              </SrOnly>
+            </label>
+          </div>
 
-      <abbr title={MinutesLabel()}>
-        <MinutesLabelAbbr />
-      </abbr>
+          <abbr title={MinutesLabel()}>
+            <MinutesLabelAbbr />
+          </abbr>
+        </>
+      )}
 
-      <div className={Styles.Seconds}>
-        {String(seconds || 0).padStart(2, '0')}
+      {(showSeconds || showMinutes || hours !== 0) && (
+        <>
+          <div className={Styles.Seconds}>
+            {String(seconds || 0).padStart(2, '0')}
 
-        <label>
-          <input
-            type="text"
-            inputMode="numeric"
-            maxLength="2"
-            pattern="[0-9]*"
-            value={secondsBuffer}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onSubmit={onBlur}
-            onKeyUp={onKeyUp}
-          />
+            <label>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength="2"
+                pattern="[0-9]*"
+                value={secondsBuffer}
+                onChange={onChange}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onSubmit={onBlur}
+                onKeyUp={onKeyUp}
+              />
 
-          <SrOnly>
-            <SecondsLabel />
-          </SrOnly>
-        </label>
-      </div>
+              <SrOnly>
+                <SecondsLabel />
+              </SrOnly>
+            </label>
+          </div>
 
-      <abbr title={SecondsLabel()}>
-        <SecondsLabelAbbr />
-      </abbr>
+          <abbr title={SecondsLabel()}>
+            <SecondsLabelAbbr />
+          </abbr>
+        </>
+      )}
     </div>
   );
 }

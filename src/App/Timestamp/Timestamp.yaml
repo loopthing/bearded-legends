@@ -1,0 +1,4 @@
+en:
+  TimestampScreenInstructionMessage: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac fringilla erat, id lobortis lectus. Ut gravida massa vel viverra venenatis. Phasellus accumsan lorem quis risus feugiat pharetra. Curabitur nec turpis quis leo efficitur elementum sed.
+  RelativeTimestampHeader: Relative time
+  WallClockTimestampHeader: Wall clock time

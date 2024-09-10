@@ -3,8 +3,9 @@ en:
   GuildName: Bearded Legends
   GuildNameDecorative: ⎯ Bearded ✦ Legends ⎯
   HomeScreenName: Home
+  TimestampScreenName: Timestamp
+  WarTimerScreenName: War Timer
   SettingsScreenName: Settings
-  WarTimerScreenName: Timer
   AddButtonLabel: Add
   CopyButtonLabel: Copy
   DoneButtonLabel: Done

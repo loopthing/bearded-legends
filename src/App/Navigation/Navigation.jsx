@@ -3,7 +3,13 @@ import Link from '@components/Link';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import React, { useEffect, useState } from 'react';
-import { Clock, Gear, House, List } from 'react-bootstrap-icons';
+import {
+  Clock,
+  Gear,
+  HourglassSplit,
+  House,
+  List,
+} from 'react-bootstrap-icons';
 import { v4 as uuidv4 } from 'uuid';
 import * as Styles from './Navigation.scss';
 import NavigationContent from './Navigation.yaml';
@@ -34,8 +40,16 @@ export default function Navigation({ onClick }) {
           </Link>
         </li>
         <li role="none">
-          <Link role="menuitem" href="/war-timer" onClick={hideMenu}>
+          <Link role="menuitem" href="/timestamp" onClick={hideMenu}>
             <Clock />
+            <span>
+              <b.TimestampScreenName />
+            </span>
+          </Link>
+        </li>
+        <li role="none">
+          <Link role="menuitem" href="/war-timer" onClick={hideMenu}>
+            <HourglassSplit />
             <span>
               <b.WarTimerScreenName />
             </span>

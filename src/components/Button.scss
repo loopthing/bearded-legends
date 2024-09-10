@@ -18,10 +18,6 @@
   text-decoration: none;
 }
 
-@mixin ButtonActive {
-  color: var(--color-cyan);
-}
-
 @mixin ButtonHover {
   text-decoration: underline;
 }
@@ -44,9 +40,5 @@
     &:hover {
       @include ButtonHover;
     }
-  }
-
-  &:active {
-    @include ButtonActive;
   }
 }

@@ -16,6 +16,12 @@
   }
 }
 
+.BounceOnFocus {
+  &:focus {
+    @include Bounce;
+  }
+}
+
 @keyframes Bounce {
   0% {
     transform: scale(1);

@@ -8,6 +8,7 @@ import 'reset-css';
 import About from './App/About/About';
 import App from './App/App';
 import Settings from './App/Settings/Settings';
+import Timestamp from './App/Timestamp/Timestamp';
 import WarTimer from './App/WarTimer/WarTimer';
 import './index.css';
 
@@ -44,6 +45,14 @@ const router = createBrowserRouter(
       element: (
         <App>
           <Settings />
+        </App>
+      ),
+    },
+    {
+      path: 'timestamp',
+      element: (
+        <App>
+          <Timestamp />
         </App>
       ),
     },

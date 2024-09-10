@@ -3,15 +3,11 @@ import ShowAnimation from '@components/ShowAnimation';
 import SrOnly from '@components/SrOnly';
 import globalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
+import Clipboard from '@utils/Clipboard';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useEffect, useState } from 'react';
-import {
-  BoxArrowUp,
-  PauseCircle,
-  PlayCircle,
-  XCircle,
-} from 'react-bootstrap-icons';
+import { Copy, PauseCircle, PlayCircle, XCircle } from 'react-bootstrap-icons';
 import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './Timer.scss';
 import TimerDisplay from './TimerDisplay';
@@ -34,6 +30,7 @@ export default function Timer({
     ResetButtonLabel,
     ResumeButtonLabel,
     StartButtonLabel,
+    DefaultTimerName,
     EndsAtMessage,
     ExpiredAtMessage,
   } = useContentBundle(globalContent, warTimerContent);
@@ -109,30 +106,18 @@ export default function Timer({
     });
   };
 
-  const onClickCopyButton = (_domEvent) => {
+  const onClickCopyButton = async (_domEvent) => {
     const timestamp = (endTimestamp / 1000) | 0;
+    const timerName = name || DefaultTimerName();
     const text =
       remainingMillis > 0
-        ? EndsAtMessage({ timerName: name, timestamp })
-        : ExpiredAtMessage({ timerName: name, timestamp });
+        ? EndsAtMessage({ timerName, timestamp })
+        : ExpiredAtMessage({ timerName, timestamp });
 
-    if (navigator?.clipboard) {
-      navigator.clipboard.writeText(text).catch((cause) => {
-        _logger.error('Failed to copy timer', cause);
-      });
-    } else {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      document.body.appendChild(textarea);
-      textarea.select();
-
-      try {
-        document.execCommand('copy');
-      } catch (cause) {
-        console.error('Failed to copy timer', cause);
-      }
-
-      document.body.removeChild(textarea);
+    try {
+      await Clipboard.copy(text);
+    } catch (cause) {
+      _logger.error('Failed to copy timer text', cause);
     }
   };
 
@@ -221,7 +206,7 @@ export default function Timer({
               collapse={Styles.Collapse}
             >
               <IconButton onClick={onClickCopyButton}>
-                <BoxArrowUp />
+                <Copy />
                 <SrOnly>
                   <CopyButtonLabel />
                 </SrOnly>
