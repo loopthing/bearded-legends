@@ -1,5 +1,6 @@
 import Card from '@components/Card';
 import IconButton from '@components/IconButton';
+import SrOnly from '@components/SrOnly';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
@@ -21,6 +22,7 @@ export default function Timestamp({ className }) {
     TimestampScreenInstructionMessage,
     RelativeTimestampHeader,
     WallClockTimestampHeader,
+    CopyButtonLabel,
   } = useContentBundle(GlobalContent, TimestampContent);
   const [remainingMillis, setRemainingMillis] = useLocalStorage(
     'BL.Timestamp.remainingMillis',
@@ -54,6 +56,9 @@ export default function Timestamp({ className }) {
           <div>
             <IconButton onClick={onClickCopyButton}>
               <Copy />
+              <SrOnly>
+                <CopyButtonLabel />
+              </SrOnly>
             </IconButton>
             <TimerDisplay
               showHours={true}
