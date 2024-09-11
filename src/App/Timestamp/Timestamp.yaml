@@ -1,4 +1,17 @@
 en:
-  TimestampScreenInstructionMessage: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac fringilla erat, id lobortis lectus. Ut gravida massa vel viverra venenatis. Phasellus accumsan lorem quis risus feugiat pharetra. Curabitur nec turpis quis leo efficitur elementum sed.
+  TimestampScreenInstructionMessage: >
+    On this page, you can create timestamps that are compatible with Discord.
+    Simply enter the relative time or wall clock time you want to share in your
+    Discord chat. After generating the timestamp, you can copy and paste it
+    directly into your chat messages.
   RelativeTimestampHeader: Relative time
+  RelativeTimestampMessage: >
+    To create a relative timestamp, specify the number of hours, minutes, or
+    seconds from the current time. Enter your time duration below, and then
+    copy and paste the generated timestamp into your chat message.
   WallClockTimestampHeader: Wall clock time
+  WallClockTimestampMessage: >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac fringilla
+    erat, id lobortis lectus. Ut gravida massa vel viverra venenatis. Phasellus
+    accumsan lorem quis risus feugiat pharetra. Curabitur nec turpis quis leo
+    efficitur elementum sed.

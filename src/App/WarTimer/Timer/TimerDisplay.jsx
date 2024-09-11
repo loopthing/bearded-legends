@@ -173,7 +173,7 @@ export default function TimerDisplay({
         </>
       )}
 
-      {(showSeconds || showMinutes || hours !== 0) && (
+      {showSeconds && (
         <>
           <div className={Styles.Seconds}>
             {String(seconds || 0).padStart(2, '0')}

@@ -21,7 +21,9 @@ export default function Timestamp({ className }) {
     TimestampScreenName,
     TimestampScreenInstructionMessage,
     RelativeTimestampHeader,
+    RelativeTimestampMessage,
     WallClockTimestampHeader,
+    WallClockTimestampMessage,
     CopyButtonLabel,
   } = useContentBundle(GlobalContent, TimestampContent);
   const [remainingMillis, setRemainingMillis] = useLocalStorage(
@@ -49,32 +51,35 @@ export default function Timestamp({ className }) {
         <p>
           <TimestampScreenInstructionMessage />
         </p>
-        <Card className={DOM.classNames(Styles.Card)}>
-          <h2>
-            <RelativeTimestampHeader />
-          </h2>
-          <div>
-            <IconButton onClick={onClickCopyButton}>
-              <Copy />
-              <SrOnly>
-                <CopyButtonLabel />
-              </SrOnly>
-            </IconButton>
-            <TimerDisplay
-              showHours={true}
-              remainingMillis={remainingMillis}
-              updateRemainingMillis={setRemainingMillis}
-            />
-          </div>
-        </Card>
-        <Card>
-          <h2>
-            <WallClockTimestampHeader />
-          </h2>
-          <div>Today | Tomorrow | Other</div>
-          <div>Calendar date</div>
-          <div>HH:MM</div>
-        </Card>
+        <h2>
+          <RelativeTimestampHeader />
+        </h2>
+        <p>
+          <RelativeTimestampMessage />
+        </p>
+        <div className={Styles.RelativeTimestamp}>
+          <IconButton onClick={onClickCopyButton}>
+            <Copy />
+            <SrOnly>
+              <CopyButtonLabel />
+            </SrOnly>
+          </IconButton>
+          <TimerDisplay
+            showHours={true}
+            showSeconds={false}
+            remainingMillis={remainingMillis}
+            updateRemainingMillis={setRemainingMillis}
+          />
+        </div>
+        <h2>
+          <WallClockTimestampHeader />
+        </h2>
+        <p>
+          <WallClockTimestampMessage />
+        </p>
+        <div>Today | Tomorrow | Other</div>
+        <div>Calendar date</div>
+        <div>HH:MM</div>
       </div>
       <Toolbar>
         <Navigation />

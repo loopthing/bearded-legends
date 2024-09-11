@@ -3,10 +3,8 @@
   min-height: 100vh;
   padding: 1rem;
 
-  .Card {
-    h2 + div {
-      align-items: center;
-      display: flex;
-    }
+  .RelativeTimestamp {
+    align-items: center;
+    display: flex;
   }
 }

@@ -1,13 +1,13 @@
 import useSwipe from '@hooks/useSwipe';
+import * as AnimationStyles from '@styles/Animation.scss';
 import * as Layout from '@styles/Layout.scss';
 import DOM from '@utils/DOM';
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Card.scss';
-import * as AnimationStyles from '@styles/Animation.scss';
 
 export default function Card({ className, children, edit: _edit }) {
   const [swipeRef, swipe] = useSwipe();
-  const [edit, setEdit] = useState(_edit);
+  const [edit, setEdit] = useState(_edit); // FIXME The overall state vs. individual state
 
   const frontChildren = React.Children.toArray(children).filter(
     (child) => child.type !== SlideIn,
@@ -30,8 +30,8 @@ export default function Card({ className, children, edit: _edit }) {
       className={DOM.classNames(
         className,
         Styles.Card,
-        AnimationStyles.Shimmer,
-        edit && Styles.Flip,
+        edit && AnimationStyles.Shimmer,
+        // edit && Styles.Flip, // FIXME Move animation to AnimationStyles
       )}
       ref={swipeRef}
     >
