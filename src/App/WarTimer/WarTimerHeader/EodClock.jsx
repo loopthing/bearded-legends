@@ -1,11 +1,11 @@
-import dateTimeContent from '@content/DateTime.yaml';
-import globalContent from '@content/Global.yaml';
+import DateTimeContent from '@content/DateTime.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
 import { HeartbeatContext } from '../../HeartbeatProvider';
-import warTimerContent from '../WarTimer.yaml';
+import WarTimerContent from '../WarTimer.yaml';
 import * as Styles from './UtcClock.scss';
 
 export default function EodClock({ className }) {
@@ -17,7 +17,7 @@ export default function EodClock({ className }) {
     MinutesLabelAbbr,
     SecondsLabel,
     SecondsLabelAbbr,
-  } = useContentBundle(globalContent, dateTimeContent, warTimerContent);
+  } = useContentBundle(GlobalContent, DateTimeContent, WarTimerContent);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);

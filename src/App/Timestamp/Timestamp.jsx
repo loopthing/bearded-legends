@@ -1,4 +1,3 @@
-import Card from '@components/Card';
 import IconButton from '@components/IconButton';
 import SrOnly from '@components/SrOnly';
 import Toolbar from '@components/Toolbar';
@@ -11,7 +10,7 @@ import Logger from '@utils/Logger';
 import React from 'react';
 import { Copy } from 'react-bootstrap-icons';
 import Navigation from '../Navigation/Navigation';
-import TimerDisplay from '../WarTimer/Timer/TimerDisplay';
+import TimerDisplay from '../TimerDisplay';
 import * as Styles from './Timestamp.scss';
 import TimestampContent from './Timestamp.yaml';
 

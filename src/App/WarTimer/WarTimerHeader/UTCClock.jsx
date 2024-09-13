@@ -1,19 +1,19 @@
-import dateTimeContent from '@content/DateTime.yaml';
-import globalContent from '@content/Global.yaml';
+import DateTimeContent from '@content/DateTime.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
-import * as Styles from './UtcClock.scss';
 import { HeartbeatContext } from '../../HeartbeatProvider';
-import warTimerContent from '../WarTimer.yaml';
+import WarTimerContent from '../WarTimer.yaml';
+import * as Styles from './UtcClock.scss';
 
 export default function UtcClock({ className }) {
   const _logger = new Logger('UtcClock');
   const { CLOCK_FORMAT_SHORT, UTC } = useContentBundle(
-    globalContent,
-    dateTimeContent,
-    warTimerContent,
+    GlobalContent,
+    DateTimeContent,
+    WarTimerContent,
   );
   const [hours, setHours] = useState('0');
   const [minutes, setMinutes] = useState('00');

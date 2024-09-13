@@ -1,12 +1,11 @@
 import SrOnly from '@components/SrOnly';
-import dateTimeContent from '@content/DateTime.yaml';
-import globalContent from '@content/Global.yaml';
+import DateTimeContent from '@content/DateTime.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import * as Layout from '@styles/Layout.scss';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useEffect, useRef, useState } from 'react';
-import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './TimerDisplay.scss';
 
 export default function TimerDisplay({
@@ -25,7 +24,7 @@ export default function TimerDisplay({
     MinutesLabelAbbr,
     SecondsLabel,
     SecondsLabelAbbr,
-  } = useContentBundle(globalContent, dateTimeContent, warTimerContent);
+  } = useContentBundle(GlobalContent, DateTimeContent);
   const ref = useRef(null);
   const dirtyRef = useRef({});
 

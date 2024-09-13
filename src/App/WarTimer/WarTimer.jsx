@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 import Toolbar from '@components/Toolbar';
-import globalContent from '@content/Global.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import { useLocalStorage } from '@hooks/useStorage';
 import DOM from '@utils/DOM';
@@ -12,7 +12,7 @@ import Navigation from '../Navigation/Navigation';
 import NodeDataList from './NodeDataList';
 import TimerList from './TimerList';
 import * as Styles from './WarTimer.scss';
-import warTimerContent from './WarTimer.yaml';
+import WarTimerContent from './WarTimer.yaml';
 import WarTimerHeader from './WarTimerHeader/WarTimerHeader';
 
 const DEFAULT_REMAINING_MILLIS = 1_800_000;
@@ -20,8 +20,8 @@ const DEFAULT_REMAINING_MILLIS = 1_800_000;
 export default function WarTimer({ className }) {
   const _logger = new Logger('WarTimer');
   const { AddButtonLabel, DoneButtonLabel, EditButtonLabel } = useContentBundle(
-    globalContent,
-    warTimerContent,
+    GlobalContent,
+    WarTimerContent,
   );
   const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
   const [edit, setEdit] = useState(false);

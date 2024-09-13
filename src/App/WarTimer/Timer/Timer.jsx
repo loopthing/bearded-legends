@@ -1,17 +1,17 @@
 import IconButton from '@components/IconButton';
 import ShowAnimation from '@components/ShowAnimation';
 import SrOnly from '@components/SrOnly';
-import globalContent from '@content/Global.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import Clipboard from '@utils/Clipboard';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useEffect, useState } from 'react';
 import { Copy, PauseCircle, PlayCircle, XCircle } from 'react-bootstrap-icons';
-import warTimerContent from '../WarTimer.yaml';
 import * as Styles from './Timer.scss';
-import TimerDisplay from './TimerDisplay';
+import TimerDisplay from '../../TimerDisplay';
 import TimerLabel from './TimerLabel';
+import WarTimerContent from '../WarTimer.yaml';
 
 const DEFAULT_REMAINING_MILLIS = 1_800_000; //FIXME Repeated definition
 const WARNING_REMAINING_MILLIS = 240_000;
@@ -33,7 +33,7 @@ export default function Timer({
     DefaultTimerName,
     EndsAtMessage,
     ExpiredAtMessage,
-  } = useContentBundle(globalContent, warTimerContent);
+  } = useContentBundle(GlobalContent, WarTimerContent);
 
   const { name, startTimestamp, pauseTimestamp, endTimestamp } = timer;
 

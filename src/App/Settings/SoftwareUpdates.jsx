@@ -3,7 +3,7 @@ import useAppVersion from '@hooks/useAppVersion';
 import useContentBundle from '@hooks/useContentBundle';
 import React, { useEffect } from 'react';
 import { CheckCircleFill, ExclamationDiamondFill } from 'react-bootstrap-icons';
-import content from './Settings.yaml';
+import SettingsContent from './Settings.yaml';
 
 export default function SoftwareUpdates() {
   const {
@@ -14,7 +14,7 @@ export default function SoftwareUpdates() {
       SoftwareUpdatesStatusMessage,
       UpdateButtonLabel,
     },
-  } = useContentBundle(content);
+  } = useContentBundle(SettingsContent);
 
   const [
     appVersion,

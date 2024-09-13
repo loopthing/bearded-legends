@@ -1,11 +1,11 @@
 import Button from '@components/Button';
-import globalContent from '@content/Global.yaml';
+import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import useZoom from '@hooks/useZoom';
 import Logger from '@utils/Logger';
 import React from 'react';
 import { DashCircle, PlusCircle, XCircle } from 'react-bootstrap-icons';
-import settingsContent from './Settings.yaml';
+import SettingsContent from './Settings.yaml';
 
 export default function AccessibilitySettings() {
   const _logger = new Logger('Settings');
@@ -16,7 +16,7 @@ export default function AccessibilitySettings() {
       ZoomInButtonLabel,
     },
     ResetButtonLabel,
-  } = useContentBundle(globalContent, settingsContent);
+  } = useContentBundle(GlobalContent, SettingsContent);
   const [fontSize, onClickZoomIn, onClickZoomOut, onClickReset] = useZoom();
 
   return (

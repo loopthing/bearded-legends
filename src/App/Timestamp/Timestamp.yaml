@@ -11,7 +11,6 @@ en:
     copy and paste the generated timestamp into your chat message.
   WallClockTimestampHeader: Wall clock time
   WallClockTimestampMessage: >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac fringilla
-    erat, id lobortis lectus. Ut gravida massa vel viverra venenatis. Phasellus
-    accumsan lorem quis risus feugiat pharetra. Curabitur nec turpis quis leo
-    efficitur elementum sed.
+    To generate a wall clock timestamp, enter the date and time according to
+    your local time zone. You can then copy and paste the timestamp into your
+    chat message.
