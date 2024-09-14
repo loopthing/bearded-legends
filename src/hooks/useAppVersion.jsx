@@ -38,6 +38,8 @@ export default function useAppVersion() {
     await fetch(`/bearded-legends/index.html?bust=${now}`);
     await fetch(`/bearded-legends/bundle.js?bust=${now}`);
 
+    window.root.unmount();
+
     await new Promise((resolve, reject) => {
       const script = document.createElement('script');
       document.body.appendChild(script);
