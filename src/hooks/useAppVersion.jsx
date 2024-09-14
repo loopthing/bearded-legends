@@ -35,9 +35,6 @@ export default function useAppVersion() {
   async function updateApp() {
     const now = Date.now();
 
-    await fetch(`/bearded-legends/index.html?bust=${now}`);
-    await fetch(`/bearded-legends/bundle.js?bust=${now}`);
-
     // FIXME Find a better way to share root
     window.root.unmount();
 
@@ -53,7 +50,7 @@ export default function useAppVersion() {
 
   async function reloadApp() {
     await new Promise((resolve) => setTimeout(resolve, 400));
-    window.location.reload();
+    window.location.reload(true);
   }
 
   return [
