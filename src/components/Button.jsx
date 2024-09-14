@@ -3,10 +3,13 @@ import React, { useEffect, useRef } from 'react';
 import * as Styles from './Button.scss';
 import * as AnimationStyles from '@styles/Animation.scss';
 
-export default function Button({ className, children, onClick }) {
+export default function Button({ className, children, onClick, href }) {
   const attr = DOM.attr(arguments[0]);
-
   const animationRef = useRef();
+
+  if (href) {
+    Object.assign(attr, { role: 'link' });
+  }
 
   useEffect(() => {
     const node = animationRef.current;
@@ -15,27 +18,42 @@ export default function Button({ className, children, onClick }) {
       node.classList.remove(AnimationStyles.Bounce);
     };
 
-    const onBlur = () => {
+    const onFocus = () => {
       node.classList.add(AnimationStyles.Bounce);
     };
 
+    const onBlur = () => {
+      node.classList.remove(AnimationStyles.Bounce);
+    };
+
     node.addEventListener('animationend', onAnimationEnd);
+    node.addEventListener('focus', onFocus);
+    node.addEventListener('click', onFocus);
     node.addEventListener('blur', onBlur);
-    node.addEventListener('click', onBlur);
 
     return () => {
       node.removeEventListener('animationend', onAnimationEnd);
+      node.removeEventListener('focus', onFocus);
+      node.removeEventListener('click', onFocus);
       node.removeEventListener('blur', onBlur);
-      node.removeEventListener('click', onBlur);
     };
   }, []);
+
+  const _onClick = async (domEvent) => {
+    if (href) {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      window.location = href;
+    } else {
+      onClick(domEvent);
+    }
+  };
 
   return (
     <button
       ref={animationRef}
       className={DOM.classNames(className, Styles.Button)}
       type="button"
-      onClick={onClick}
+      onClick={_onClick}
       {...attr}
     >
       {children}

@@ -1,9 +1,11 @@
-import Link, { ButtonLink } from '@components/Link';
+import Button from '@components/Button';
+import Link from '@components/Link';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
 import * as AnimationStyles from '@styles/Animation.scss';
 import DOM from '@utils/DOM';
+import Logger from '@utils/Logger';
 import React from 'react';
 import useZoom from '../../hooks/useZoom';
 import Logo from '../Logo';
@@ -13,12 +15,15 @@ import * as Styles from './About.scss';
 import AboutContent from './About.yaml';
 
 export default function App({ className }) {
+  const _logger = new Logger('App');
+
   const {
     ChatAppLinkUrl,
     ChatAppInvitationLinkUrl,
     ChatAppInvitationMessage,
     ChatAppInvitationLinkLabel,
     ChatAppLinkLabel,
+    GuildName,
     GuildNameDecorative,
   } = useContentBundle(GlobalContent, AboutContent);
 
@@ -28,15 +33,18 @@ export default function App({ className }) {
     <>
       <div className={DOM.classNames(className, Styles.About)}>
         <Logo className={DOM.classNames(Styles.Logo, LogoStyles.Largest)} />
-        <div>
-          <p>
+
+        <h1 tabIndex="-1" aria-label={GuildName()}>
+          <span aria-hidden="true">
             <GuildNameDecorative />
-          </p>
-        </div>
+          </span>
+        </h1>
+
         <div className={Styles.Chat}>
-          <ButtonLink href={ChatAppLinkUrl()}>
+          <Button href={ChatAppLinkUrl()}>
             <ChatAppLinkLabel />
-          </ButtonLink>
+          </Button>
+
           <p>
             <ChatAppInvitationMessage />
             <br />

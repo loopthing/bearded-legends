@@ -10,9 +10,9 @@ import HeartbeatProvider from './HeartbeatProvider';
 export default function App({ children }) {
   const _logger = new Logger('App');
   const location = useLocation();
-  const [pathname, setPathname] = useLocalStorage('BL.App.pathname');
   const navigate = useNavigate();
   const contentRef = useRef();
+  const [pathname, setPathname] = useLocalStorage('BL.App.pathname');
 
   void useServiceWorker();
   void useZoom();
@@ -27,6 +27,18 @@ export default function App({ children }) {
   useEffect(() => {
     _logger.log(location);
     setPathname(location.pathname);
+  }, [location]);
+
+  useEffect(() => {
+    const contentDiv = contentRef.current;
+
+    if (contentDiv) {
+      const h1 = contentDiv.querySelector('h1');
+
+      if (h1) {
+        h1.focus();
+      }
+    }
   }, [location]);
 
   useEffect(() => {

@@ -82,7 +82,7 @@ export default function Timestamp({ className }) {
   return (
     <>
       <div className={DOM.classNames(className, Styles.Timestamp)}>
-        <h1>
+        <h1 tabIndex="-1">
           <TimestampScreenName />
         </h1>
         <p>

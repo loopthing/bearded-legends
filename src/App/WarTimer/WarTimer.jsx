@@ -1,4 +1,5 @@
 import Button from '@components/Button';
+import SrOnly from '@components/SrOnly';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
@@ -19,10 +20,14 @@ const DEFAULT_REMAINING_MILLIS = 1_800_000;
 
 export default function WarTimer({ className }) {
   const _logger = new Logger('WarTimer');
-  const { AddButtonLabel, DoneButtonLabel, EditButtonLabel } = useContentBundle(
-    GlobalContent,
-    WarTimerContent,
-  );
+
+  const {
+    WarTimerScreenName,
+    AddButtonLabel,
+    DoneButtonLabel,
+    EditButtonLabel,
+  } = useContentBundle(GlobalContent, WarTimerContent);
+
   const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
   const [edit, setEdit] = useState(false);
 
@@ -46,6 +51,12 @@ export default function WarTimer({ className }) {
 
   return (
     <>
+      <SrOnly>
+        <h1 tabIndex="-1">
+          <WarTimerScreenName />
+        </h1>
+      </SrOnly>
+
       <div className={DOM.classNames(className, Styles.WarTimer)}>
         <WarTimerHeader />
         <TimerList timers={timers} setTimers={setTimers} edit={edit} />

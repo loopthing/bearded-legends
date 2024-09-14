@@ -25,6 +25,16 @@ export default function Navigation({ onClick }) {
 
   return (
     <nav onClick={onClick}>
+      <Button
+        className={Styles.NavigationButton}
+        onClick={toggleMenu}
+        aria-expanded={isExpanded}
+        aria-controls={menuId}
+        aria-label={b.NavigationButtonLabel()}
+      >
+        <List />
+      </Button>
+
       <ul
         className={`${Styles.Menu} ${isExpanded ? Styles.Open : ''}`}
         id={menuId}
@@ -64,16 +74,6 @@ export default function Navigation({ onClick }) {
           </Link>
         </li>
       </ul>
-
-      <Button
-        className={Styles.NavigationButton}
-        onClick={toggleMenu}
-        aria-expanded={isExpanded}
-        aria-controls={menuId}
-        aria-label={b.NavigationButtonLabel()}
-      >
-        <List />
-      </Button>
     </nav>
   );
 }
