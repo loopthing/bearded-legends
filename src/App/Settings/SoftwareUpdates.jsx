@@ -12,6 +12,7 @@ export default function SoftwareUpdates() {
       AvailableAppVersionLabel,
       SoftwareUpdatesErrorMessage,
       SoftwareUpdatesStatusMessage,
+      ReloadButtonLabel,
       UpdateButtonLabel,
     },
   } = useContentBundle(SettingsContent);
@@ -19,7 +20,7 @@ export default function SoftwareUpdates() {
   const [
     appVersion,
     availableVersion,
-    { checkUpdates, updateApp },
+    { checkUpdates, updateApp, reloadApp },
     versionError,
   ] = useAppVersion();
 
@@ -44,19 +45,24 @@ export default function SoftwareUpdates() {
           <div>{availableVersion}</div>
         )}
 
-        {!versionError && availableVersion === appVersion && (
-          <div>
-            <CheckCircleFill />
-            <span>
-              <SoftwareUpdatesStatusMessage.UpToDate />
-            </span>
-          </div>
+        {!versionError && availableVersion === appVersion ? (
+          <>
+            <div>
+              <CheckCircleFill />
+              <span>
+                <SoftwareUpdatesStatusMessage.UpToDate />
+              </span>
+            </div>
+            <Button onClick={reloadApp}>
+              <ReloadButtonLabel />
+            </Button>
+          </>
+        ) : (
+          <Button onClick={updateApp}>
+            <UpdateButtonLabel />
+          </Button>
         )}
       </label>
-
-      <Button onClick={updateApp}>
-        <UpdateButtonLabel />
-      </Button>
     </>
   );
 }

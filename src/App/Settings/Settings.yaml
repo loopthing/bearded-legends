@@ -11,4 +11,5 @@ en:
     SoftwareUpdatesErrorMessage: Failed to retrieve available version.
     SoftwareUpdatesStatusMessage:
       UpToDate: Your app is up-to-date.
+    ReloadButtonLabel: Reload your app
     UpdateButtonLabel: Update your app

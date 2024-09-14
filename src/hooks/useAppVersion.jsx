@@ -38,6 +38,7 @@ export default function useAppVersion() {
     await fetch(`/bearded-legends/index.html?bust=${now}`);
     await fetch(`/bearded-legends/bundle.js?bust=${now}`);
 
+    // FIXME Find a better way to share root
     window.root.unmount();
 
     await new Promise((resolve, reject) => {
@@ -48,15 +49,17 @@ export default function useAppVersion() {
       script.async = true;
       script.src = `/bearded-legends/bundle.js?bust=${now}`;
     });
+  }
 
-    // await new Promise((resolve) => setTimeout(resolve, 400));
-    // window.location.reload();
+  async function reloadApp() {
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    window.location.reload();
   }
 
   return [
     appVersion,
     availableVersion,
-    { checkUpdates, updateApp },
+    { checkUpdates, updateApp, reloadApp },
     error,
     progress,
   ];
