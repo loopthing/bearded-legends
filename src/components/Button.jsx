@@ -33,11 +33,7 @@ export default function Button({ className, children, onClick }) {
   return (
     <button
       ref={animationRef}
-      className={DOM.classNames(
-        className,
-        Styles.Button,
-        AnimationStyles.BounceOnFocus,
-      )}
+      className={DOM.classNames(className, Styles.Button)}
       type="button"
       onClick={onClick}
       {...attr}
