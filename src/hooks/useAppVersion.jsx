@@ -33,10 +33,22 @@ export default function useAppVersion() {
   }
 
   async function updateApp() {
-    await fetch(`/bearded-legends/index.html?bust=${Date.now()}`);
-    await fetch(`/bearded-legends/bundle.js?bust=${Date.now()}`);
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    window.location.reload();
+    const now = Date.now();
+
+    await fetch(`/bearded-legends/index.html?bust=${now}`);
+    await fetch(`/bearded-legends/bundle.js?bust=${now}`);
+
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      document.body.appendChild(script);
+      script.onload = resolve;
+      script.onerror = reject;
+      script.async = true;
+      script.src = `/bearded-legends/bundle.js?bust=${now}`;
+    });
+
+    // await new Promise((resolve) => setTimeout(resolve, 400));
+    // window.location.reload();
   }
 
   return [
