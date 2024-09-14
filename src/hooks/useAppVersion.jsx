@@ -33,7 +33,8 @@ export default function useAppVersion() {
   }
 
   async function updateApp() {
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    // await new Promise((resolve) => setTimeout(resolve, 400));
+    await fetch(`/bearded-legends/bundle.js?bust=${Date.now()}`);
     window.location.reload();
   }
 

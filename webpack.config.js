@@ -11,7 +11,7 @@ module.exports = {
     main: './src/index.jsx',
   },
   output: {
-    filename: `bundle.${version}.js`,
+    filename: `bundle.js`,
     path: path.resolve(__dirname, 'docs'),
     publicPath: '/bearded-legends/',
   },
