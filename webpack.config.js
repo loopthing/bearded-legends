@@ -72,6 +72,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.ejs',
       inlineSource: '.(js|css)$',
+      inject: false,
     }),
     new CopyWebpackPlugin({
       patterns: [
