@@ -49,14 +49,7 @@ export default function Navigation({ onClick }) {
             </span>
           </Link>
         </li>
-        <li role="none">
-          <Link role="menuitem" href="/timestamp" onClick={hideMenu}>
-            <Clock />
-            <span>
-              <b.TimestampScreenName />
-            </span>
-          </Link>
-        </li>
+
         <li role="none">
           <Link role="menuitem" href="/war-timer" onClick={hideMenu}>
             <HourglassSplit />
@@ -65,6 +58,16 @@ export default function Navigation({ onClick }) {
             </span>
           </Link>
         </li>
+
+        <li role="none">
+          <Link role="menuitem" href="/timestamp" onClick={hideMenu}>
+            <Clock />
+            <span>
+              <b.TimestampScreenName />
+            </span>
+          </Link>
+        </li>
+
         <li role="none">
           <Link role="menuitem" href="/settings" onClick={hideMenu}>
             <Gear />
