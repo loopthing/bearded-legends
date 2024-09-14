@@ -17,7 +17,8 @@
 }
 
 .BounceOnFocus {
-  &:focus {
+  &:focus,
+  &:focus-visible {
     @include Bounce;
   }
 }
