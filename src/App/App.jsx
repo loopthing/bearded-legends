@@ -2,7 +2,7 @@ import useServiceWorker from '@hooks/useServiceWorker';
 import { useLocalStorage } from '@hooks/useStorage';
 import useZoom from '@hooks/useZoom';
 import Logger from '@utils/Logger';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Styles from './App.scss';
 import HeartbeatProvider from './HeartbeatProvider';
@@ -12,6 +12,7 @@ export default function App({ children }) {
   const location = useLocation();
   const [pathname, setPathname] = useLocalStorage('BL.App.pathname');
   const navigate = useNavigate();
+  const contentRef = useRef();
 
   void useServiceWorker();
   void useZoom();
@@ -28,9 +29,28 @@ export default function App({ children }) {
     setPathname(location.pathname);
   }, [location]);
 
+  useEffect(() => {
+    const contentDiv = contentRef.current;
+
+    if (contentDiv) {
+      const rem = parseFloat(
+        getComputedStyle(document.documentElement).fontSize,
+      );
+
+      const viewportHeight = window.innerHeight - 4.75 * rem;
+      const contentHeight = contentDiv.offsetHeight;
+
+      if (viewportHeight < contentHeight) {
+        contentDiv.classList.add(Styles.Bottom);
+      }
+    }
+  }, []);
+
   return (
     <HeartbeatProvider>
-      <div className={Styles.App}>{children}</div>
+      <div className={Styles.App} ref={contentRef}>
+        {children}
+      </div>
     </HeartbeatProvider>
   );
 }

@@ -1,5 +1,4 @@
-import IconButton from '@components/IconButton';
-import SrOnly from '@components/SrOnly';
+import Button from '@components/Button';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
@@ -16,20 +15,37 @@ import TimestampContent from './Timestamp.yaml';
 
 export default function Timestamp({ className }) {
   const _logger = new Logger('Timestamp');
+
   const {
     TimestampScreenName,
     TimestampScreenInstructionMessage,
     RelativeTimestampHeader,
     RelativeTimestampMessage,
+    RelativeTimestampCopyButtonLabel,
     WallClockTimestampHeader,
     WallClockTimestampMessage,
-    CopyButtonLabel,
+    WallClockTimestampCopyButtonLabel,
   } = useContentBundle(GlobalContent, TimestampContent);
+
   const [remainingMillis, setRemainingMillis] = useLocalStorage(
     'BL.Timestamp.remainingMillis',
   );
 
-  const onClickCopyButton = async (_domEvent) => {
+  const [wallClockDate, setWallClockDate] = useLocalStorage(
+    'BL.Timestamp.wallClockDate',
+    () => new Date().toISOString().split('T')[0],
+  );
+
+  const [wallClockTime, setWallClockTime] = useLocalStorage(
+    'BL.Timestamp.wallClockTime',
+    () =>
+      new Date()
+        .toISOString()
+        .split('T')[1]
+        .replace(/:[^:]+$/, ''),
+  );
+
+  const onClickCopyRelativeTimestampButton = async (_domEvent) => {
     const endTimestamp = Date.now() + remainingMillis;
     const timestamp = (endTimestamp / 1000) | 0;
     const text = `<t:${timestamp}:f> (<t:${timestamp}:R>)`; //TODO Make this dynamic and content driven
@@ -37,7 +53,29 @@ export default function Timestamp({ className }) {
     try {
       await Clipboard.copy(text);
     } catch (cause) {
-      _logger.error('Failed to copy timestamp text', cause);
+      _logger.error('Failed to copy relative timestamp text', cause);
+    }
+  };
+
+  const onChangeWallClockDate = (domEvent) => {
+    setWallClockDate(domEvent.target.value);
+  };
+
+  const onChangeWallClockTime = (domEvent) => {
+    setWallClockTime(domEvent.target.value);
+  };
+
+  const onClickCopyWallClockTimestampButton = async (_domEvent) => {
+    const endTimestamp = new Date(
+      `${wallClockDate}T${wallClockTime}`,
+    ).valueOf();
+    const timestamp = (endTimestamp / 1000) | 0;
+    const text = `<t:${timestamp}:f> (<t:${timestamp}:R>)`; //TODO Make this dynamic and content driven
+
+    try {
+      await Clipboard.copy(text);
+    } catch (cause) {
+      _logger.error('Failed to copy wall clock timestamp text', cause);
     }
   };
 
@@ -57,18 +95,18 @@ export default function Timestamp({ className }) {
           <RelativeTimestampMessage />
         </p>
         <div className={Styles.RelativeTimestamp}>
-          <IconButton onClick={onClickCopyButton}>
-            <Copy />
-            <SrOnly>
-              <CopyButtonLabel />
-            </SrOnly>
-          </IconButton>
           <TimerDisplay
             showHours={true}
             showSeconds={false}
             remainingMillis={remainingMillis}
             updateRemainingMillis={setRemainingMillis}
           />
+          <Button onClick={onClickCopyRelativeTimestampButton}>
+            <Copy />
+            <span>
+              <RelativeTimestampCopyButtonLabel />
+            </span>
+          </Button>
         </div>
         <h2>
           <WallClockTimestampHeader />
@@ -76,9 +114,30 @@ export default function Timestamp({ className }) {
         <p>
           <WallClockTimestampMessage />
         </p>
-        <div>Today | Tomorrow | Other</div>
-        <div>Calendar date</div>
-        <div>HH:MM</div>
+        <div className={Styles.WallClockTimestamp}>
+          <label>
+            Date
+            <input
+              type="date"
+              value={wallClockDate}
+              onChange={onChangeWallClockDate}
+            ></input>
+          </label>
+          <label>
+            Time
+            <input
+              type="time"
+              value={wallClockTime}
+              onChange={onChangeWallClockTime}
+            ></input>
+          </label>
+          <Button onClick={onClickCopyWallClockTimestampButton}>
+            <Copy />
+            <span>
+              <WallClockTimestampCopyButtonLabel />
+            </span>
+          </Button>
+        </div>
       </div>
       <Toolbar>
         <Navigation />

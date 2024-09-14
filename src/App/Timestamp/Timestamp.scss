@@ -3,8 +3,44 @@
   min-height: 100vh;
   padding: 1rem;
 
+  label {
+    display: inline-block;
+  }
+
+  & > label:not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  input {
+    background-color: var(--color-black);
+    border: 0;
+    color-scheme: dark;
+    color: var(--color-white);
+    display: block;
+    font-size: 2rem;
+
+    input[type='date'] {
+      content: '';
+    }
+
+    input[type='time'] {
+      content: '';
+    }
+  }
+
   .RelativeTimestamp {
-    align-items: center;
-    display: flex;
+    margin: 1rem 0 0.75rem 0;
+
+    button {
+      margin-top: 1rem;
+    }
+  }
+
+  .WallClockTimestamp {
+    margin: 1rem 0 0.75rem 0;
+
+    button {
+      margin-top: 1rem;
+    }
   }
 }

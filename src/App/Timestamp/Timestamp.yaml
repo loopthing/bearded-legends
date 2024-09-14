@@ -6,9 +6,11 @@ en:
     into your chat messages.
   RelativeTimestampHeader: Relative time
   RelativeTimestampMessage: >
-    To create a relative timestamp, specify the number of hours and minutes
-    from the current time. Enter your time duration below.
+    To create a relative timestamp, enter the number of hours and minutes
+    from now.
+  RelativeTimestampCopyButtonLabel: Copy relative time
   WallClockTimestampHeader: Wall clock time
   WallClockTimestampMessage: >
     To create a wall clock timestamp, enter the date and time according to your
     local time zone.
+  WallClockTimestampCopyButtonLabel: Copy wall clock time
