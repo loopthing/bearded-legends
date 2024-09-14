@@ -12,11 +12,11 @@ export default function Button({ className, children, onClick }) {
     const node = animationRef.current;
 
     const onAnimationEnd = () => {
-      node.classList.remove(AnimationStyles.BounceOnFocus);
+      node.classList.remove(AnimationStyles.Bounce);
     };
 
     const onBlur = () => {
-      node.classList.add(AnimationStyles.BounceOnFocus);
+      node.classList.add(AnimationStyles.Bounce);
     };
 
     node.addEventListener('animationend', onAnimationEnd);
