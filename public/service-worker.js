@@ -2,11 +2,11 @@ const VERSION = '0.0.1-b001';
 const CACHE_NAME = `BL-cache-${VERSION}`;
 
 const ASSETS = [
-  '/',
+  // '/',
   '/favicon.ico',
-  '/index.html',
+  // '/index.html',
   // '/bundle.js',
-  '/manifest.json',
+  // '/manifest.json',
   '/icons/android-chrome-192x192.png',
   '/icons/android-chrome-512x512.png',
   '/b8c277d8a1c9b0d28afd.png',
