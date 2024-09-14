@@ -1,4 +1,4 @@
-const VERSION = '1.0.24';
+const VERSION = '1.0.25';
 const CACHE_NAME = `BL-cache-${VERSION}`;
 
 const ASSETS = [
@@ -12,37 +12,37 @@ const ASSETS = [
 self.addEventListener('install', (domEvent) => {
   console.log('[service-worker] install');
 
-  domEvent.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    }),
-  );
+  // domEvent.waitUntil(
+  //   caches.open(CACHE_NAME).then((cache) => {
+  //     return cache.addAll(ASSETS);
+  //   }),
+  // );
 });
 
-self.addEventListener('fetch', (domEvent) => {
-  console.log('[service-worker] fetch');
+// self.addEventListener('fetch', (domEvent) => {
+//   console.log('[service-worker] fetch');
 
-  if (
-    domEvent.request.url.startsWith('chrome-extension:') ||
-    domEvent.request.url.startsWith('file:')
-  ) {
-    // If the request is unsupported, do nothing
-    return;
-  }
+//   if (
+//     domEvent.request.url.startsWith('chrome-extension:') ||
+//     domEvent.request.url.startsWith('file:')
+//   ) {
+//     // If the request is unsupported, do nothing
+//     return;
+//   }
 
-  domEvent.respondWith(
-    fetch(domEvent.request)
-      .then((response) => {
-        return caches.open(CACHE_NAME).then((cache) => {
-          cache.put(domEvent.request, response.clone());
-          return response;
-        });
-      })
-      .catch(() => {
-        return caches.match(domEvent.request);
-      }),
-  );
-});
+//   domEvent.respondWith(
+//     fetch(domEvent.request)
+//       .then((response) => {
+//         return caches.open(CACHE_NAME).then((cache) => {
+//           cache.put(domEvent.request, response.clone());
+//           return response;
+//         });
+//       })
+//       .catch(() => {
+//         return caches.match(domEvent.request);
+//       }),
+//   );
+// });
 
 self.addEventListener('activate', (event) => {
   console.log('[service-worker] activate');
