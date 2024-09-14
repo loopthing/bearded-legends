@@ -1,1 +1,1 @@
-const VERSION="1.0.28",CACHE_NAME=`BL-cache-${VERSION}`;self.addEventListener("activate",(e=>{console.log("[service-worker] activate");const c=[CACHE_NAME];e.waitUntil(caches.keys().then((e=>Promise.all(e.map((e=>{if(!c.includes(e))return caches.delete(e)}))))))}));
+self.addEventListener("activate",(e=>{console.log("[service-worker] activate");const t=[CACHE_NAME];e.waitUntil(caches.keys().then((e=>Promise.all(e.map((e=>{if(!t.includes(e))return caches.delete(e)}))))))}));

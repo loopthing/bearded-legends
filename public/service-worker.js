@@ -1,5 +1,5 @@
-const VERSION = '1.0.28';
-const CACHE_NAME = `BL-cache-${VERSION}`;
+// const VERSION = '1.0.28';
+// const CACHE_NAME = `BL-cache-${VERSION}`;
 
 // const ASSETS = [
 //   '/favicon.ico',
