@@ -1,1 +1,0 @@
-self.addEventListener("activate",(e=>{console.log("[service-worker] activate");const t=[CACHE_NAME];e.waitUntil(caches.keys().then((e=>Promise.all(e.map((e=>{if(!t.includes(e))return caches.delete(e)}))))))}));
