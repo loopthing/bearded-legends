@@ -1,23 +1,23 @@
-const VERSION = '1.0.25';
+const VERSION = '1.0.28';
 const CACHE_NAME = `BL-cache-${VERSION}`;
 
-const ASSETS = [
-  '/favicon.ico',
-  '/icons/android-chrome-192x192.png',
-  '/icons/android-chrome-512x512.png',
-  '/b8c277d8a1c9b0d28afd.png',
-  '/75d37cba851487f6e6cc.woff',
-];
+// const ASSETS = [
+//   '/favicon.ico',
+//   '/icons/android-chrome-192x192.png',
+//   '/icons/android-chrome-512x512.png',
+//   '/b8c277d8a1c9b0d28afd.png',
+//   '/75d37cba851487f6e6cc.woff',
+// ];
 
-self.addEventListener('install', (domEvent) => {
-  console.log('[service-worker] install');
+// self.addEventListener('install', (domEvent) => {
+//   console.log('[service-worker] install');
 
-  // domEvent.waitUntil(
-  //   caches.open(CACHE_NAME).then((cache) => {
-  //     return cache.addAll(ASSETS);
-  //   }),
-  // );
-});
+//   domEvent.waitUntil(
+//     caches.open(CACHE_NAME).then((cache) => {
+//       return cache.addAll(ASSETS);
+//     }),
+//   );
+// });
 
 // self.addEventListener('fetch', (domEvent) => {
 //   console.log('[service-worker] fetch');
