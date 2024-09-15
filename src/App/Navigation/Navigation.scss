@@ -19,7 +19,7 @@
   &.Open {
     display: flex;
     width: 100%;
-    z-index: 1000; //TODO Manage z-index in one place
+    // z-index: 1000; //TODO Manage z-index in one place
   }
 
   li {

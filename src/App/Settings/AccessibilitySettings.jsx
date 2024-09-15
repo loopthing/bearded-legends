@@ -9,6 +9,7 @@ import SettingsContent from './Settings.yaml';
 
 export default function AccessibilitySettings() {
   const _logger = new Logger('Settings');
+
   const {
     AccessibilitySettings: {
       ZoomFieldSetLabel,
@@ -17,6 +18,7 @@ export default function AccessibilitySettings() {
     },
     ResetButtonLabel,
   } = useContentBundle(GlobalContent, SettingsContent);
+
   const [fontSize, onClickZoomIn, onClickZoomOut, onClickReset] = useZoom();
 
   return (

@@ -2,6 +2,7 @@ import Button from '@components/Button';
 import Link from '@components/Link';
 import GlobalContent from '@content/Global.yaml';
 import useContentBundle from '@hooks/useContentBundle';
+import * as AnimationStyles from '@styles/Animation.scss';
 import React, { useEffect, useState } from 'react';
 import {
   Clock,
@@ -13,6 +14,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import * as Styles from './Navigation.scss';
 import NavigationContent from './Navigation.yaml';
+import DOM from '@utils/DOM';
 
 export default function Navigation({ onClick }) {
   const [menuId, setMenuId] = useState(null);
@@ -36,7 +38,12 @@ export default function Navigation({ onClick }) {
       </Button>
 
       <ul
-        className={`${Styles.Menu} ${isExpanded ? Styles.Open : ''}`}
+        // className={`${Styles.Menu} ${isExpanded ? AnimationStyles.SlideUp : ''}`}
+        className={DOM.classNames(
+          Styles.Menu,
+          isExpanded && Styles.Open,
+          isExpanded && AnimationStyles.SlideUp,
+        )}
         id={menuId}
         role="menubar"
         aria-label={b.NavigationMenuLabel()}
