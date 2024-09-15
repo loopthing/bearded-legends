@@ -1,5 +1,5 @@
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import Logger from '@utils/Logger';
 import React, { useRef } from 'react';
 import WarTimerContent from '../WarTimer.yaml';
@@ -7,7 +7,7 @@ import * as Styles from './TimerLabel.scss';
 
 export default function TimerLabel({ name, setName, dataListId }) {
   const _logger = new Logger('TimerLabel');
-  const { DefaultTimerName } = useContentBundle(GlobalContent, WarTimerContent);
+  const { DefaultTimerName } = useContent(GlobalContent, WarTimerContent);
   const inputRef = useRef(null);
 
   const onFocus = (_domEvent) => {

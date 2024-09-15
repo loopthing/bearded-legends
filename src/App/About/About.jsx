@@ -2,7 +2,7 @@ import Button from '@components/Button';
 import Link from '@components/Link';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import * as AnimationStyles from '@styles/Animation.scss';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
@@ -25,7 +25,7 @@ export default function App({ className }) {
     ChatAppLinkLabel,
     GuildName,
     GuildNameDecorative,
-  } = useContentBundle(GlobalContent, AboutContent);
+  } = useContent(GlobalContent, AboutContent);
 
   useZoom();
 

@@ -1,7 +1,7 @@
 import Button from '@components/Button';
 import Card from '@components/Card';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import Logger from '@utils/Logger';
 import React, { useContext } from 'react';
 import { HeartbeatContext } from '../HeartbeatProvider';
@@ -18,10 +18,7 @@ export default function TimerList({
   const _logger = new Logger('WarTimer');
   const { tick } = useContext(HeartbeatContext);
 
-  const { RemoveButtonLabel } = useContentBundle(
-    GlobalContent,
-    WarTimerContent,
-  );
+  const { RemoveButtonLabel } = useContent(GlobalContent, WarTimerContent);
 
   return (
     <ul className={Styles.TimerList}>

@@ -1,6 +1,6 @@
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import DOM from '@utils/DOM';
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
@@ -14,23 +14,17 @@ export default function Settings({ className }) {
     SettingsScreenName,
     AccessibilitySettingsHeader,
     SoftwareUpdatesHeader,
-  } = useContentBundle(GlobalContent, SettingsContent);
+  } = useContent(GlobalContent, SettingsContent);
 
   return (
     <>
       <div className={DOM.classNames(className, Styles.Settings)}>
-        <h1 tabIndex="-1">
-          <SettingsScreenName />
-        </h1>
+        <h1 tabIndex="-1">{SettingsScreenName()}</h1>
 
-        <h2>
-          <AccessibilitySettingsHeader />
-        </h2>
+        <h2>{AccessibilitySettingsHeader()}</h2>
         <AccessibilitySettings />
 
-        <h2>
-          <SoftwareUpdatesHeader />
-        </h2>
+        <h2>{SoftwareUpdatesHeader()}</h2>
         <SoftwareUpdates />
       </div>
 

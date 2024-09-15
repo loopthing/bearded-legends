@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import useZoom from '@hooks/useZoom';
 import Logger from '@utils/Logger';
 import React from 'react';
@@ -17,35 +17,27 @@ export default function AccessibilitySettings() {
       ZoomInButtonLabel,
     },
     ResetButtonLabel,
-  } = useContentBundle(GlobalContent, SettingsContent);
+  } = useContent(GlobalContent, SettingsContent);
 
   const [fontSize, onClickZoomIn, onClickZoomOut, onClickReset] = useZoom();
 
   return (
     <fieldset>
-      <legend>
-        <ZoomFieldSetLabel />
-      </legend>
+      <legend>{ZoomFieldSetLabel()}</legend>
 
       <Button onClick={onClickZoomIn}>
         <PlusCircle />
-        <span>
-          <ZoomInButtonLabel />
-        </span>
+        <span>{ZoomInButtonLabel()}</span>
       </Button>
 
       <Button onClick={onClickZoomOut}>
         <DashCircle />
-        <span>
-          <ZoomOutButtonLabel />
-        </span>
+        <span>{ZoomOutButtonLabel()}</span>
       </Button>
 
       <Button onClick={onClickReset}>
         <XCircle />
-        <span>
-          <ResetButtonLabel />
-        </span>
+        <span>{ResetButtonLabel()}</span>
       </Button>
     </fieldset>
   );

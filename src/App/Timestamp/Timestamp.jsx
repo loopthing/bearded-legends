@@ -1,7 +1,7 @@
 import Button from '@components/Button';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import { useLocalStorage } from '@hooks/useStorage';
 import Clipboard from '@utils/Clipboard';
 import DOM from '@utils/DOM';
@@ -25,7 +25,7 @@ export default function Timestamp({ className }) {
     WallClockTimestampHeader,
     WallClockTimestampMessage,
     WallClockTimestampCopyButtonLabel,
-  } = useContentBundle(GlobalContent, TimestampContent);
+  } = useContent(GlobalContent, TimestampContent);
 
   const [remainingMillis, setRemainingMillis] = useLocalStorage(
     'BL.Timestamp.remainingMillis',

@@ -1,7 +1,7 @@
 import SrOnly from '@components/SrOnly';
 import DateTimeContent from '@content/DateTime.yaml';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import * as Layout from '@styles/Layout.scss';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
@@ -17,6 +17,7 @@ export default function TimerDisplay({
   showSeconds = true,
 }) {
   const _logger = new Logger('TimerDisplay');
+
   const {
     HoursLabel,
     HoursLabelAbbr,
@@ -24,7 +25,8 @@ export default function TimerDisplay({
     MinutesLabelAbbr,
     SecondsLabel,
     SecondsLabelAbbr,
-  } = useContentBundle(GlobalContent, DateTimeContent);
+  } = useContent(GlobalContent, DateTimeContent);
+
   const ref = useRef(null);
   const dirtyRef = useRef({});
 

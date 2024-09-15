@@ -2,7 +2,7 @@ import IconButton from '@components/IconButton';
 import ShowAnimation from '@components/ShowAnimation';
 import SrOnly from '@components/SrOnly';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import Clipboard from '@utils/Clipboard';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
@@ -33,7 +33,7 @@ export default function Timer({
     DefaultTimerName,
     EndsAtMessage,
     ExpiredAtMessage,
-  } = useContentBundle(GlobalContent, WarTimerContent);
+  } = useContent(GlobalContent, WarTimerContent);
 
   const { name, startTimestamp, pauseTimestamp, endTimestamp } = timer;
 

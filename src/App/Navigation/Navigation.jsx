@@ -3,6 +3,7 @@ import Link from '@components/Link';
 import GlobalContent from '@content/Global.yaml';
 import useContent from '@hooks/useContent';
 import * as AnimationStyles from '@styles/Animation.scss';
+import DOM from '@utils/DOM';
 import React, { useEffect, useState } from 'react';
 import {
   Clock,
@@ -14,10 +15,17 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import * as Styles from './Navigation.scss';
 import NavigationContent from './Navigation.yaml';
-import DOM from '@utils/DOM';
 
 export default function Navigation({ onClick }) {
-  const [c, C] = useContent(GlobalContent, NavigationContent);
+  const {
+    NavigationButtonLabel,
+    NavigationMenuLabel,
+    HomeScreenName,
+    WarTimerScreenName,
+    TimestampScreenName,
+    SettingsScreenName,
+  } = useContent(GlobalContent, NavigationContent);
+
   const [menuId, setMenuId] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleMenu = () => setIsExpanded((x) => !x);
@@ -32,7 +40,7 @@ export default function Navigation({ onClick }) {
         onClick={toggleMenu}
         aria-expanded={isExpanded}
         aria-controls={menuId}
-        aria-label={c.NavigationButtonLabel()}
+        aria-label={NavigationButtonLabel()}
       >
         <List />
       </Button>
@@ -45,33 +53,33 @@ export default function Navigation({ onClick }) {
         )}
         id={menuId}
         role="menubar"
-        aria-label={c.NavigationMenuLabel()}
+        aria-label={NavigationMenuLabel()}
       >
         <li role="none">
           <Link role="menuitem" href="/" onClick={hideMenu}>
             <House />
-            <span>{c.HomeScreenName()}</span>
+            <span>{HomeScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/war-timer" onClick={hideMenu}>
             <HourglassSplit />
-            <span>{c.WarTimerScreenName()}</span>
+            <span>{WarTimerScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/timestamp" onClick={hideMenu}>
             <Clock />
-            <span>{c.TimestampScreenName()}</span>
+            <span>{TimestampScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/settings" onClick={hideMenu}>
             <Gear />
-            <span>{c.SettingsScreenName()}</span>
+            <span>{SettingsScreenName()}</span>
           </Link>
         </li>
       </ul>

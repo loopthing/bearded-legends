@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 import useAppVersion from '@hooks/useAppVersion';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import React, { useEffect } from 'react';
 import { CheckCircleFill, ExclamationDiamondFill } from 'react-bootstrap-icons';
 import SettingsContent from './Settings.yaml';
@@ -15,7 +15,7 @@ export default function SoftwareUpdates() {
       ReloadButtonLabel,
       UpdateButtonLabel,
     },
-  } = useContentBundle(SettingsContent);
+  } = useContent(SettingsContent);
 
   const [
     appVersion,
@@ -29,17 +29,15 @@ export default function SoftwareUpdates() {
   return (
     <>
       <label>
-        <AppVersionLabel />
+        {AppVersionLabel()}
         <div>{appVersion}</div>
       </label>
       <label>
-        <AvailableAppVersionLabel />
+        {AvailableAppVersionLabel()}
         {versionError ? (
           <div>
             <ExclamationDiamondFill />
-            <span>
-              <SoftwareUpdatesErrorMessage />
-            </span>
+            <span>{SoftwareUpdatesErrorMessage()}</span>
           </div>
         ) : (
           <div>{availableVersion}</div>
@@ -49,18 +47,12 @@ export default function SoftwareUpdates() {
           <>
             <div>
               <CheckCircleFill />
-              <span>
-                <SoftwareUpdatesStatusMessage.UpToDate />
-              </span>
+              <span>{SoftwareUpdatesStatusMessage.UP_TO_DATE()}</span>
             </div>
-            <Button onClick={reloadApp}>
-              <ReloadButtonLabel />
-            </Button>
+            <Button onClick={reloadApp}>{ReloadButtonLabel()}</Button>
           </>
         ) : (
-          <Button onClick={updateApp}>
-            <UpdateButtonLabel />
-          </Button>
+          <Button onClick={updateApp}>{UpdateButtonLabel()}</Button>
         )}
       </label>
     </>

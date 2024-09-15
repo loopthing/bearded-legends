@@ -2,7 +2,6 @@ import isComponent from '@utils/isComponent';
 import Logger from '@utils/Logger';
 import stringToTemplate from '@utils/stringToTemplate';
 import merge from 'mout/object/merge';
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 const DEFAULT_LOCALE = 'en';
@@ -16,16 +15,10 @@ const DEFAULT_LOCALE = 'en';
  *  import MyContent from './My.yaml';
  *
  *  export default function My(props) {
- *    const [b, B] = useContentBundle(GloblalContent, MyContent);
+ *    const c = useContent(GlobalContent, MyContent);
  *
  *    return (
- *      <p>
- *        You can either do this
- *        {b.Greeting({ name: "World" })}
- *
- *        or, do this
- *        <B.Greeting name="World" />
- *      </p>
+ *      <p>{c.Greeting({ name: "World" })}</p>
  *    );
  *  }
  *
@@ -71,51 +64,41 @@ export default function useContent(...contentList) {
 
   // Localized content, if one exists, supersedes the default content.
   const content = merge(defaultContent, localizedContent);
+  return createContentProxy(content);
 
-  // Returns a render function if the template string is found.
-  // Otherwise, log warning to the console.
-  const contentProxy = new Proxy(content, {
-    get: function (target, contentKey) {
-      if (contentKey in target) {
-        return (props) => renderContent(target[contentKey], props);
-      }
+  // Private methods
 
-      logger.warn(contentKey);
-      return () => contentKey;
-    },
-  });
+  function createContentProxy(object) {
+    return new Proxy(object, {
+      get(target, contentKey) {
+        if (contentKey in target) {
+          const contentValue = target[contentKey];
 
-  // Returns the render function wrapped in React component.
-  const componentProxy = new Proxy(content, {
-    get: function (target, contentKey) {
-      return (props) => Content({ ...props, contentKey });
-    },
-  });
+          if (contentValue && typeof contentValue === 'object') {
+            return createContentProxy(target[contentKey]);
+          }
 
-  // React component wrapper around content renderer.
-  function Content(props) {
-    const { contentKey } = props;
-    return (
-      <span data-bl-content-key={contentKey}>
-        {contentProxy[contentKey](props)}
-      </span>
-    );
+          return (props) => renderContent(target[contentKey], props);
+        }
+
+        logger.warn(contentKey);
+        return () => contentKey;
+      },
+    });
   }
 
-  return [contentProxy, componentProxy];
-}
+  function renderContent(string, props) {
+    const values =
+      props &&
+      Object.entries(props).reduce((results, [key, value]) => {
+        if (isComponent(value)) {
+          results[key] = renderToString(value);
+        } else {
+          results[key] = value;
+        }
+        return results;
+      }, {});
 
-function renderContent(string, props) {
-  const values =
-    props &&
-    Object.entries(props).reduce((results, [key, value]) => {
-      if (isComponent(value)) {
-        results[key] = renderToString(value);
-      } else {
-        results[key] = value;
-      }
-      return results;
-    }, {});
-
-  return stringToTemplate(string, values);
+    return stringToTemplate(string, values);
+  }
 }

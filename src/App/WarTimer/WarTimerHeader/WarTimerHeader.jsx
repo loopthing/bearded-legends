@@ -1,5 +1,5 @@
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import * as Layout from '@styles/Layout.scss';
 import Logger from '@utils/Logger';
 import React from 'react';
@@ -10,7 +10,7 @@ import * as Styles from './WarTimerHeader.scss';
 
 export default function WarTimerHeader() {
   const _logger = new Logger('WarTimerHeader');
-  const { GuildNameDecorative } = useContentBundle(GlobalContent);
+  const { GuildNameDecorative } = useContent(GlobalContent);
 
   return (
     <>

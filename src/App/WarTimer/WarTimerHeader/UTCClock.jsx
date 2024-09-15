@@ -1,6 +1,6 @@
 import DateTimeContent from '@content/DateTime.yaml';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
 import React, { useContext, useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ import * as Styles from './UtcClock.scss';
 
 export default function UtcClock({ className }) {
   const _logger = new Logger('UtcClock');
-  const { CLOCK_FORMAT_SHORT, UTC } = useContentBundle(
+  const { CLOCK_FORMAT_SHORT, UTC } = useContent(
     GlobalContent,
     DateTimeContent,
     WarTimerContent,

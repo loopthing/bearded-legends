@@ -2,7 +2,7 @@ import Button from '@components/Button';
 import SrOnly from '@components/SrOnly';
 import Toolbar from '@components/Toolbar';
 import GlobalContent from '@content/Global.yaml';
-import useContentBundle from '@hooks/useContentBundle';
+import useContent from '@hooks/useContent';
 import { useLocalStorage } from '@hooks/useStorage';
 import DOM from '@utils/DOM';
 import Logger from '@utils/Logger';
@@ -28,7 +28,7 @@ export default function WarTimer({ className }) {
     AddButtonLabel,
     DoneButtonLabel,
     EditButtonLabel,
-  } = useContentBundle(GlobalContent, WarTimerContent);
+  } = useContent(GlobalContent, WarTimerContent);
 
   const addTimer = (value) => {
     // Add a new timer at the end of the list.
