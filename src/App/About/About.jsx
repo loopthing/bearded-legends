@@ -14,7 +14,7 @@ import Navigation from '../Navigation/Navigation';
 import * as Styles from './About.scss';
 import AboutContent from './About.yaml';
 
-export default function App({ className }) {
+export default function About({ className }) {
   const _logger = new Logger('App');
 
   const {
@@ -35,7 +35,9 @@ export default function App({ className }) {
         <Logo className={DOM.classNames(Styles.Logo, LogoStyles.Largest)} />
 
         <h1 tabIndex="-1" aria-label={GuildName()}>
-          <span aria-hidden="true">{GuildNameDecorative()}</span>
+          <span aria-hidden="true">
+            <GuildNameDecorative />
+          </span>
         </h1>
 
         <div className={Styles.Chat}>

@@ -52,24 +52,18 @@ export default function EodClock({ className }) {
           {!!hours && (
             <>
               {hours}
-              <abbr title={HoursLabel()}>
-                <HoursLabelAbbr />
-              </abbr>
+              <abbr title={HoursLabel()}>{HoursLabelAbbr()}</abbr>
             </>
           )}
           {(!!hours || !!minutes) && (
             <>
               {minutes}
-              <abbr title={MinutesLabel()}>
-                <MinutesLabelAbbr />
-              </abbr>
+              <abbr title={MinutesLabel()}>{MinutesLabelAbbr()}</abbr>
             </>
           )}
           <span className={Styles.Seconds}>
             {seconds}
-            <abbr title={SecondsLabel()}>
-              <SecondsLabelAbbr />
-            </abbr>
+            <abbr title={SecondsLabel()}>{SecondsLabelAbbr()}</abbr>
           </span>
         </div>
       </div>

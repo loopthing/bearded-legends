@@ -17,7 +17,7 @@ export default function Timestamp({ className }) {
   const _logger = new Logger('Timestamp');
 
   const {
-    TimestampScreenName,
+    TimestampScreenHeader,
     TimestampScreenInstructionMessage,
     RelativeTimestampHeader,
     RelativeTimestampMessage,
@@ -82,18 +82,12 @@ export default function Timestamp({ className }) {
   return (
     <>
       <div className={DOM.classNames(className, Styles.Timestamp)}>
-        <h1 tabIndex="-1">
-          <TimestampScreenName />
-        </h1>
-        <p>
-          <TimestampScreenInstructionMessage />
-        </p>
-        <h2>
-          <RelativeTimestampHeader />
-        </h2>
-        <p>
-          <RelativeTimestampMessage />
-        </p>
+        <h1 tabIndex="-1">{TimestampScreenHeader()}</h1>
+        <p>{TimestampScreenInstructionMessage()}</p>
+
+        <h2>{RelativeTimestampHeader()}</h2>
+        <p>{RelativeTimestampMessage()}</p>
+
         <div className={Styles.RelativeTimestamp}>
           <TimerDisplay
             showHours={true}
@@ -103,17 +97,13 @@ export default function Timestamp({ className }) {
           />
           <Button onClick={onClickCopyRelativeTimestampButton}>
             <Copy />
-            <span>
-              <RelativeTimestampCopyButtonLabel />
-            </span>
+            <span>{RelativeTimestampCopyButtonLabel()}</span>
           </Button>
         </div>
-        <h2>
-          <WallClockTimestampHeader />
-        </h2>
-        <p>
-          <WallClockTimestampMessage />
-        </p>
+
+        <h2>{WallClockTimestampHeader()}</h2>
+        <p>{WallClockTimestampMessage()}</p>
+
         <div className={Styles.WallClockTimestamp}>
           <label>
             Date
@@ -133,12 +123,11 @@ export default function Timestamp({ className }) {
           </label>
           <Button onClick={onClickCopyWallClockTimestampButton}>
             <Copy />
-            <span>
-              <WallClockTimestampCopyButtonLabel />
-            </span>
+            <span>{WallClockTimestampCopyButtonLabel()}</span>
           </Button>
         </div>
       </div>
+
       <Toolbar>
         <Navigation />
       </Toolbar>

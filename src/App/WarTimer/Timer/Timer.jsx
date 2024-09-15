@@ -160,30 +160,22 @@ export default function Timer({
             {remainingMillis < 0 ? (
               <IconButton onClick={onClickResetButton}>
                 <XCircle />
-                <SrOnly>
-                  <ResetButtonLabel />
-                </SrOnly>
+                <SrOnly>{ResetButtonLabel()}</SrOnly>
               </IconButton>
             ) : pauseTimestamp ? (
               <IconButton onClick={onClickResumeButton}>
                 <PlayCircle />
-                <SrOnly>
-                  <ResumeButtonLabel />
-                </SrOnly>
+                <SrOnly>{ResumeButtonLabel()}</SrOnly>
               </IconButton>
             ) : !startTimestamp ? (
               <IconButton onClick={onClickStartButton}>
                 <PlayCircle />
-                <SrOnly>
-                  <StartButtonLabel />
-                </SrOnly>
+                <SrOnly>{StartButtonLabel()}</SrOnly>
               </IconButton>
             ) : (
               <IconButton onClick={onClickPauseButton}>
                 <PauseCircle />
-                <SrOnly>
-                  <PauseButtonLabel />
-                </SrOnly>
+                <SrOnly>{PauseButtonLabel()}</SrOnly>
               </IconButton>
             )}
 
@@ -194,9 +186,7 @@ export default function Timer({
             >
               <IconButton onClick={onClickResetButton}>
                 <XCircle />
-                <SrOnly>
-                  <ResetButtonLabel />
-                </SrOnly>
+                <SrOnly>{ResetButtonLabel()}</SrOnly>
               </IconButton>
             </ShowAnimation>
 
@@ -207,9 +197,7 @@ export default function Timer({
             >
               <IconButton onClick={onClickCopyButton}>
                 <Copy />
-                <SrOnly>
-                  <CopyButtonLabel />
-                </SrOnly>
+                <SrOnly>{CopyButtonLabel()}</SrOnly>
               </IconButton>
             </ShowAnimation>
 

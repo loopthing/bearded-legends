@@ -1,6 +1,6 @@
 en:
   ChatAppInvitationMessage: Not a member?
-  ChatAppInvitationLinkLabel: Join our Discord server
+  ChatAppInvitationLinkLabel: Join our ${ChatAppName} server
   ChatAppInvitationLinkUrl: https://bit.ly/bearded-legends
-  ChatAppLinkLabel: Chat
+  ChatAppLinkLabel: Open ${ChatAppName}
   ChatAppLinkUrl: https://discord.com/channels/1027199394832977992/1065962891355889806

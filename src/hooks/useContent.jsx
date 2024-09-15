@@ -78,7 +78,8 @@ export default function useContent(...contentList) {
             return createContentProxy(target[contentKey]);
           }
 
-          return (props) => renderContent(target[contentKey], props);
+          return (props) =>
+            renderContent(target[contentKey], { ...object, props });
         }
 
         logger.warn(contentKey);

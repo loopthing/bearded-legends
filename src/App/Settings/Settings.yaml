@@ -1,4 +1,5 @@
 en:
+  SettingsScreenHeader: ${SettingsScreenName}
   AccessibilitySettingsHeader: Accessibility
   AccessibilitySettings:
     ZoomInButtonLabel: Zoom in

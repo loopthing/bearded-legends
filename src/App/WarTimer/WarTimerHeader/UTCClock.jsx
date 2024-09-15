@@ -33,9 +33,7 @@ export default function UtcClock({ className }) {
       <div className={Styles.Time}>
         <div className={Styles.TimeDisplay}>
           <CLOCK_FORMAT_SHORT hours={hours} minutes={minutes} />
-          <span className={Styles.TimeZone}>
-            <UTC />
-          </span>
+          <span className={Styles.TimeZone}>{UTC()}</span>
         </div>
       </div>
     </div>

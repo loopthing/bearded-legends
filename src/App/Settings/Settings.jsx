@@ -11,7 +11,7 @@ import SoftwareUpdates from './SoftwareUpdates';
 
 export default function Settings({ className }) {
   const {
-    SettingsScreenName,
+    SettingsScreenHeader,
     AccessibilitySettingsHeader,
     SoftwareUpdatesHeader,
   } = useContent(GlobalContent, SettingsContent);
@@ -19,7 +19,7 @@ export default function Settings({ className }) {
   return (
     <>
       <div className={DOM.classNames(className, Styles.Settings)}>
-        <h1 tabIndex="-1">{SettingsScreenName()}</h1>
+        <h1 tabIndex="-1">{SettingsScreenHeader()}</h1>
 
         <h2>{AccessibilitySettingsHeader()}</h2>
         <AccessibilitySettings />

@@ -24,7 +24,7 @@ export default function WarTimer({ className }) {
   const [editAll, setEditAll] = useState(false);
 
   const {
-    WarTimerScreenName,
+    WarTimerScreenHeader,
     AddButtonLabel,
     DoneButtonLabel,
     EditButtonLabel,
@@ -62,9 +62,7 @@ export default function WarTimer({ className }) {
   return (
     <>
       <SrOnly>
-        <h1 tabIndex="-1">
-          <WarTimerScreenName />
-        </h1>
+        <h1 tabIndex="-1">{WarTimerScreenHeader()}</h1>
       </SrOnly>
 
       <div className={DOM.classNames(className, Styles.WarTimer)}>
@@ -83,21 +81,15 @@ export default function WarTimer({ className }) {
 
         <Button onClick={onClickAddButton}>
           <PlusCircle />
-          <span>
-            <AddButtonLabel />
-          </span>
+          <span>{AddButtonLabel()}</span>
         </Button>
 
         <Button onClick={onClickEditAllButton}>
           <Pencil />
           {!editAll ? (
-            <span>
-              <EditButtonLabel />
-            </span>
+            <span>{EditButtonLabel()}</span>
           ) : (
-            <span>
-              <DoneButtonLabel />
-            </span>
+            <span>{DoneButtonLabel()}</span>
           )}
         </Button>
       </Toolbar>

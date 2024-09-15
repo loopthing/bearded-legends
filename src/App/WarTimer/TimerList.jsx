@@ -36,7 +36,7 @@ export default function TimerList({
                 className={Styles.RemoveButton}
                 onClick={(_domEvent) => removeTimer(index)}
               >
-                <RemoveButtonLabel />
+                {RemoveButtonLabel()}
               </Button>
             </Card.SlideIn>
           </Card>

@@ -1,7 +1,6 @@
 import GlobalContent from '@content/Global.yaml';
 import useContent from '@hooks/useContent';
 import * as Layout from '@styles/Layout.scss';
-import Logger from '@utils/Logger';
 import React from 'react';
 import Logo from '../../Logo';
 import EodClock from './EodClock';
@@ -9,7 +8,6 @@ import UtcClock from './UtcClock';
 import * as Styles from './WarTimerHeader.scss';
 
 export default function WarTimerHeader() {
-  const _logger = new Logger('WarTimerHeader');
   const { GuildNameDecorative } = useContent(GlobalContent);
 
   return (
