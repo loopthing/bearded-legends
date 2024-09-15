@@ -27,6 +27,7 @@ export default function Card({ className, children, edit: _edit }) {
 
   return (
     <div
+      tabIndex="-1"
       className={DOM.classNames(
         className,
         Styles.Card,

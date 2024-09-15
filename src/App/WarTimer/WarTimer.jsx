@@ -29,7 +29,7 @@ export default function WarTimer({ className }) {
   } = useContentBundle(GlobalContent, WarTimerContent);
 
   const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
-  const [edit, setEdit] = useState(false);
+  const [editAll, setEditAll] = useState(false);
 
   const onClickAddButton = (_domEvent) => {
     const _timers = timers.map((timer) => ({ ...timer }));
@@ -45,8 +45,8 @@ export default function WarTimer({ className }) {
     setTimers(_timers);
   };
 
-  const onClickEditButton = (_domEvent) => {
-    setEdit((x) => !x);
+  const onClickEditAllButton = (_domEvent) => {
+    setEditAll((x) => !x);
   };
 
   return (
@@ -59,7 +59,7 @@ export default function WarTimer({ className }) {
 
       <div className={DOM.classNames(className, Styles.WarTimer)}>
         <WarTimerHeader />
-        <TimerList timers={timers} setTimers={setTimers} edit={edit} />
+        <TimerList timers={timers} setTimers={setTimers} editAll={editAll} />
         <NodeDataList />
       </div>
 
@@ -73,9 +73,9 @@ export default function WarTimer({ className }) {
           </span>
         </Button>
 
-        <Button onClick={onClickEditButton}>
+        <Button onClick={onClickEditAllButton}>
           <Pencil />
-          {!edit ? (
+          {!editAll ? (
             <span>
               <EditButtonLabel />
             </span>

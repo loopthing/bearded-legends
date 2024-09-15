@@ -9,7 +9,7 @@ import Timer from './Timer/Timer';
 import * as Styles from './TimerList.scss';
 import WarTimerContent from './WarTimer.yaml';
 
-export default function TimerList({ timers, edit, setTimers }) {
+export default function TimerList({ timers, editAll, setTimers }) {
   const _logger = new Logger('WarTimer');
   const { RemoveButtonLabel } = useContentBundle(
     GlobalContent,
@@ -21,7 +21,7 @@ export default function TimerList({ timers, edit, setTimers }) {
     <ul className={Styles.TimerList}>
       {timers.map((timer, index) => (
         <li key={timer.uuid}>
-          <Card className={Styles.Card} edit={edit}>
+          <Card className={Styles.Card} edit={editAll}>
             <Timer
               tick={tick}
               timer={timer}
