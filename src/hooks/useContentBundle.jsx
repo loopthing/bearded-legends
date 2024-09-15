@@ -43,6 +43,8 @@ import { renderToString } from 'react-dom/server';
  * This is because there is en specific content in My.yaml overriding Global.yaml,
  * but for es locale, My.yaml does not have any es specific content to override
  * the one provided by Global.yaml.
+ *
+ * @deprecated Replaced by @hooks/useContent
  */
 export default function useContentBundle(...bundles) {
   const logger = new Logger('useContentBundle');
