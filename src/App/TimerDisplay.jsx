@@ -127,15 +127,11 @@ export default function TimerDisplay({
                 onBlur={onBlur}
                 onKeyUp={onKeyUp}
               />
-              <SrOnly>
-                <HoursLabel />
-              </SrOnly>
+              <SrOnly>{HoursLabel()}</SrOnly>
             </label>
           </div>
 
-          <abbr title={HoursLabel()}>
-            <HoursLabelAbbr />
-          </abbr>
+          <abbr title={HoursLabel()}>{HoursLabelAbbr()}</abbr>
         </>
       )}
 
@@ -160,15 +156,11 @@ export default function TimerDisplay({
                 onKeyUp={onKeyUp}
               />
 
-              <SrOnly>
-                <MinutesLabel />
-              </SrOnly>
+              <SrOnly>{MinutesLabel()}</SrOnly>
             </label>
           </div>
 
-          <abbr title={MinutesLabel()}>
-            <MinutesLabelAbbr />
-          </abbr>
+          <abbr title={MinutesLabel()}>{MinutesLabelAbbr()}</abbr>
         </>
       )}
 
@@ -191,15 +183,11 @@ export default function TimerDisplay({
                 onKeyUp={onKeyUp}
               />
 
-              <SrOnly>
-                <SecondsLabel />
-              </SrOnly>
+              <SrOnly>{SecondsLabel()}</SrOnly>
             </label>
           </div>
 
-          <abbr title={SecondsLabel()}>
-            <SecondsLabelAbbr />
-          </abbr>
+          <abbr title={SecondsLabel()}>{SecondsLabelAbbr()}</abbr>
         </>
       )}
     </div>

@@ -20,6 +20,8 @@ const DEFAULT_REMAINING_MILLIS = 1_800_000;
 
 export default function WarTimer({ className }) {
   const _logger = new Logger('WarTimer');
+  const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
+  const [editAll, setEditAll] = useState(false);
 
   const {
     WarTimerScreenName,
@@ -28,21 +30,29 @@ export default function WarTimer({ className }) {
     EditButtonLabel,
   } = useContentBundle(GlobalContent, WarTimerContent);
 
-  const [timers, setTimers] = useLocalStorage('BL.WarTimer.data', []);
-  const [editAll, setEditAll] = useState(false);
+  const addTimer = (value) => {
+    // Add a new timer at the end of the list.
+    setTimers([...timers, value]);
+  };
+
+  const updateTimer = (index, value) => {
+    // Replace the timer value that was updated by the caller.
+    setTimers(timers.map((e, i) => (i === index ? { ...value } : e)));
+  };
+
+  const removeTimer = (index) => {
+    // Delete the timer that was removed by the caller.
+    setTimers([...timers.slice(0, index), ...timers.slice(index + 1)]);
+  };
 
   const onClickAddButton = (_domEvent) => {
-    const _timers = timers.map((timer) => ({ ...timer }));
-
-    _timers.push({
+    addTimer({
       uuid: uuidv4(),
       name: '',
       startTimestamp: 0,
       pauseTimestamp: 0,
       endTimestamp: DEFAULT_REMAINING_MILLIS,
     });
-
-    setTimers(_timers);
   };
 
   const onClickEditAllButton = (_domEvent) => {
@@ -59,7 +69,12 @@ export default function WarTimer({ className }) {
 
       <div className={DOM.classNames(className, Styles.WarTimer)}>
         <WarTimerHeader />
-        <TimerList timers={timers} setTimers={setTimers} editAll={editAll} />
+        <TimerList
+          timers={timers}
+          editAll={editAll}
+          updateTimer={updateTimer}
+          removeTimer={removeTimer}
+        />
         <NodeDataList />
       </div>
 
