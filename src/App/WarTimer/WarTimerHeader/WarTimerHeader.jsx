@@ -3,7 +3,7 @@ import useContent from '@hooks/useContent';
 import * as Layout from '@styles/Layout.scss';
 import React from 'react';
 import Logo from '../../Logo';
-import EodClock from './EodClock';
+import EodClock from './XClock';
 import UtcClock from './UtcClock';
 import * as Styles from './WarTimerHeader.scss';
 
