@@ -51,36 +51,28 @@ export default function Navigation({ onClick }) {
         <li role="none">
           <Link role="menuitem" href="/" onClick={hideMenu}>
             <House />
-            <span>
-              <b.HomeScreenName />
-            </span>
+            <span>{b.HomeScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/war-timer" onClick={hideMenu}>
             <HourglassSplit />
-            <span>
-              <b.WarTimerScreenName />
-            </span>
+            <span>{b.WarTimerScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/timestamp" onClick={hideMenu}>
             <Clock />
-            <span>
-              <b.TimestampScreenName />
-            </span>
+            <span>{b.TimestampScreenName()}</span>
           </Link>
         </li>
 
         <li role="none">
           <Link role="menuitem" href="/settings" onClick={hideMenu}>
             <Gear />
-            <span>
-              <b.SettingsScreenName />
-            </span>
+            <span>{b.SettingsScreenName()}</span>
           </Link>
         </li>
       </ul>

@@ -35,24 +35,22 @@ export default function App({ className }) {
         <Logo className={DOM.classNames(Styles.Logo, LogoStyles.Largest)} />
 
         <h1 tabIndex="-1" aria-label={GuildName()}>
-          <span aria-hidden="true">
-            <GuildNameDecorative />
-          </span>
+          <span aria-hidden="true">{GuildNameDecorative()}</span>
         </h1>
 
         <div className={Styles.Chat}>
-          <Button href={ChatAppLinkUrl()}>
-            <ChatAppLinkLabel />
-          </Button>
+          <Button href={ChatAppLinkUrl()}>{ChatAppLinkLabel()}</Button>
 
           <p>
             <ChatAppInvitationMessage />
+
             <br />
+
             <Link
               href={ChatAppInvitationLinkUrl()}
               className={AnimationStyles.BounceOnHover}
             >
-              <ChatAppInvitationLinkLabel />
+              {ChatAppInvitationLinkLabel()}
             </Link>
           </p>
         </div>
