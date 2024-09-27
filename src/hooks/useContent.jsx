@@ -79,7 +79,7 @@ export default function useContent(...contentList) {
           }
 
           return (props) =>
-            renderContent(target[contentKey], { ...object, props });
+            renderContent(target[contentKey], { ...object, ...props });
         }
 
         logger.warn(contentKey);
